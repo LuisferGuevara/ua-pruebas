@@ -6,18 +6,18 @@ import {
   FormLabel,
   Heading,
   HStack,
-  Img,
+  // Img,
   Input,
   Stack,
   Text,
   useBreakpointValue,
 } from '@chakra-ui/react';
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, /* useNavigate */ } from 'react-router-dom';
 
 const Register = () => {
   const { register, handleSubmit } = useForm();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
 
   const submit = user => {

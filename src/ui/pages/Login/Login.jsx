@@ -1,16 +1,14 @@
 import {
-  Avatar,
-  AvatarGroup,
+
   Box,
   Center,
   DarkMode,
   Flex,
   Heading,
-  HStack,
+
   Stack,
   Text,
-  useBreakpointValue,
-  useColorModeValue as mode,
+
 } from "@chakra-ui/react";
 import * as React from "react";
 // import { Logo } from "./Logo";
