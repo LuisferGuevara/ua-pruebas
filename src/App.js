@@ -7,8 +7,8 @@ function App() {
     <div className="app">
     <h1>AQUI VA LA CABECERA</h1>
     <Login/>
-    <h1>AQUI VA el FOOTER</h1>
     <Register/>
+    <h1>AQUI VA el FOOTER</h1>
     </div>
   );
 }
