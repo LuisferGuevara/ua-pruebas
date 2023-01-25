@@ -12,7 +12,7 @@ import {
 } from "@chakra-ui/react";
 import * as React from "react";
 import { LogoIcon } from "./Logo";
-import { GoogleIcon } from "./ProviderIcons";
+import { PasswordField } from "./PasswordField";
 
 export const SignInForm = (props) => {
   const isMobile = useBreakpointValue({
@@ -36,6 +36,7 @@ export const SignInForm = (props) => {
               md: "sm",
             })}
             fontSize="32px"
+            color="#23375B"
           >
             Inicio de Sesión
           </Heading>
@@ -44,15 +45,16 @@ export const SignInForm = (props) => {
       <Stack spacing="6">
         <Stack spacing="5">
           <FormControl>
-            <FormLabel htmlFor="email">Email</FormLabel>
-            <Input id="email" placeholder="Enter your email" type="email" />
+            <FormLabel htmlFor="email" color="#23375B">Email</FormLabel>
+            <Input id="email" placeholder="Introduce tu email" type="email" color="#23375B"/>
           </FormControl>
-          <FormControl>
+          {/* <FormControl>
             <FormLabel htmlFor="password">Contraseña</FormLabel>
             <Input id="password" placeholder="********" type="password" />
-          </FormControl>
+          </FormControl> */}
+          <PasswordField />
         </Stack>
-        <HStack>
+        <HStack color="#23375B">
           <Checkbox defaultChecked>Recuérdame</Checkbox>
         </HStack>
         <HStack>
@@ -64,7 +66,7 @@ export const SignInForm = (props) => {
           <Button bgColor="#23375B" color="white" variant="primary">INICIAR SESIÓN</Button>
         </Stack>
         <HStack spacing="1" justify="center">
-          <Text color="muted">¿No tienes una cuenta aún?</Text>
+          <Text color="#23375B">¿No tienes una cuenta aún?</Text>
           <Button variant="link" colorScheme="blue">
             Regístrate
           </Button>
