@@ -15,17 +15,15 @@ import { Link, NavLink } from "react-router-dom";
 import { PasswordField } from "./PasswordField";
 
 export const SignInForm = (props) => {
-
   return (
-    <Stack spacing="8" {...props} minH="635px" maxH="700px" borderRadius="0 28px  28px 0">
+    <Stack spacing="8" {...props} minH="697px" borderRadius="0 28px  28px 0" bg="red">
       <Stack spacing="6">
-
         <Stack
           spacing={{
             base: "2",
             md: "3",
           }}
-          textAlign="start"
+          textAlign="center"
         >
           <Heading
             size={useBreakpointValue({
@@ -39,11 +37,13 @@ export const SignInForm = (props) => {
           </Heading>
         </Stack>
       </Stack>
-      <Stack spacing="6">
-        <Stack spacing="5">
+      <Stack spacing="2">
+        <Stack spacing="16" mt="40px">
           <FormControl>
-            <FormLabel htmlFor="email" color="#23375B">Email</FormLabel>
-            <Input id="email" placeholder="Introduce tu email" type="email" color="#23375B"/>
+            <FormLabel htmlFor="email" color="#23375B">
+              Email
+            </FormLabel>
+            <Input id="email" placeholder="Introduce tu email" type="email" color="#23375B" />
           </FormControl>
           {/* <FormControl>
             <FormLabel htmlFor="password">Contraseña</FormLabel>
@@ -51,7 +51,7 @@ export const SignInForm = (props) => {
           </FormControl> */}
           <PasswordField />
         </Stack>
-        <HStack color="#23375B">
+        <HStack color="#23375B" pt="40px">
           <Checkbox defaultChecked>Recuérdame</Checkbox>
         </HStack>
         <HStack>
@@ -59,15 +59,21 @@ export const SignInForm = (props) => {
             ¿Has olvidado tu contraseña?
           </Button>
         </HStack>
-        <Stack spacing="4">
-          <Button bgColor="#23375B" color="white" variant="primary">INICIAR SESIÓN</Button>
+        <Stack spacing="6" pt="40px">
+          <Button bgColor="#23375B" color="white" variant="primary">
+            INICIAR SESIÓN
+          </Button>
         </Stack>
-        <HStack spacing="1" justify="space-evenly">
-          <Text color="#23375B">¿No tienes una cuenta aún?</Text>
-          <NavLink  to="/register"  color="red" >
-          <Text color="#3182ce" fontWeight="medium" >Regístrate</Text>
-          </NavLink>
-        </HStack>
+        <Stack  pt="8em">
+          <HStack spacing="1">
+            <Text color="#23375B">¿No tienes una cuenta aún?</Text>
+            <NavLink to="/register" color="red">
+              <Text color="#3182ce" fontWeight="medium">
+                Regístrate
+              </Text>
+            </NavLink>
+          </HStack>
+        </Stack>
       </Stack>
     </Stack>
   );

@@ -1,15 +1,7 @@
-import {
-  Box,
-  Center,
-  DarkMode,
-  Flex,
-  Heading,
-  Stack,
-  Text,
-} from "@chakra-ui/react";
+import { Box, Center, DarkMode, Flex, Heading, Stack, Text } from "@chakra-ui/react";
 import * as React from "react";
 import { SignInForm } from "../Login/SignInForm";
-import myImage from "../../../assets/Poli.png";
+import myImage from "../../../../../assets/Poli.png";
 
 export const Login = () => (
   <Flex
@@ -19,14 +11,18 @@ export const Login = () => (
       md: "100%",
     }}
     borderRadius="28px"
-    maxWidth= "1440px"
     m="20px auto"
     w="85%"
     h="100%"
   >
-    <Flex  mx="auto" width="full">
-      <Box  
-      borderRadius="28px  0 0 28px "
+    <Flex mx="auto" width="full"   borderRadius="28px ">
+      <Box 
+        borderRadius="28px  0 0 28px "
+         bgImage={`url(${myImage})`}
+         bgPosition="30%"
+            bgSize="cover"
+           
+            objectFit="cover"
         flex="1"
         display={{
           base: "none",
@@ -34,13 +30,9 @@ export const Login = () => (
         }}
       >
         <DarkMode>
-          <Flex 
-
-            bgPosition="30%"
-            bgImage={`url(${myImage})`}
-            bgSize="cover"
-            borderRadius="28px 0 0 28px"
-            objectFit="cover"
+          <Flex
+           
+            
             direction="column"
             px={{
               base: "4",
@@ -52,21 +44,11 @@ export const Login = () => (
             <Flex flex="1" align="left" mt="10">
               <Stack spacing="8">
                 <Stack spacing="0" textAlign="start">
-                <Heading
-                mb="-25px"
-                    fontSize="3em"
-                    color="white"
-                    textShadow="1px 2px 0 black"
-                  >
+                  <Heading mb="-25px" fontSize="3em" color="white" textShadow="1px 2px 0 black">
                     Comienza el
                   </Heading>
-                <Heading
-                    spacing="0"
-                    color="white"
-                    fontSize="6em"
-                    textShadow="1px 2px 0 black"
-                  >
-                  Desafío.
+                  <Heading spacing="0" color="white" fontSize="6em" textShadow="1px 2px 0 black">
+                    Desafío.
                   </Heading>
                   <Text
                     fontSize="lg"
@@ -92,8 +74,8 @@ export const Login = () => (
             md: "8",
           }}
           py={{
-            base: "24",
-            md: "48",
+            base: "12",
+            md: "12",
           }}
           width="full"
           maxW="md"

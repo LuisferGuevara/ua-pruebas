@@ -3,6 +3,10 @@
   /* background: rgb(1,22,32);
   background: linear-gradient(280deg, rgba(1,22,32,1) 0%, rgba(13,35,75,1) 26%, rgba(35,55,91,1) 41%, rgba(55,73,106,1) 64%, rgba(55,73,106,1) 85%); */
   background-color: #2a3d60;
+  margin: 0 auto;
+}
+.app  span, p {
+  color: #282c34;
 }
 
 .app-logo {

@@ -8,11 +8,10 @@ import {
   Text,
 } from "@chakra-ui/react";
 import * as React from "react";
-import { SignInForm } from "../Login/SignInForm";
-import myImage from "../../../assets/Poli.png";
+import myImage from "../../../../../assets/Poli.png";
 import RegisterForm from "./RegisterForm";
 
-export const Registro = () => (
+export const Register = () => (
   <Flex
     bgColor="#fff"
     color="#222"
@@ -95,7 +94,7 @@ export const Registro = () => (
           }}
           py={{
             base: "12",
-            md: "48",
+            md: "12",
           }}
           width="full"
           maxW="md"
