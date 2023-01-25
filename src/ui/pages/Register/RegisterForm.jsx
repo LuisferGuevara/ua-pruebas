@@ -15,7 +15,7 @@ import {
 
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
-import { Link /* useNavigate */ } from "react-router-dom";
+import { NavLink/* useNavigate */ } from "react-router-dom";
 
 const Register = () => {
   const {
@@ -54,7 +54,7 @@ const Register = () => {
           <Stack spacing="6" align="center">
             <Stack spacing="3" textAlign="center">
               <Heading
-                color="white"
+                color="black"
 
                 size={useBreakpointValue({
                   base: "md",
@@ -69,7 +69,7 @@ const Register = () => {
           <Stack spacing="6">
             <Stack spacing="5">
               <FormControl isRequired isInvalid={errors.name}>
-                <FormLabel color="white" htmlFor="name">
+                <FormLabel color="black" htmlFor="name">
                   Nombre
                 </FormLabel>
                 <Input
@@ -90,7 +90,7 @@ const Register = () => {
                 </FormErrorMessage>
               </FormControl>
               <FormControl isRequired isInvalid={errors.lastName}>
-                <FormLabel color="white" htmlFor="lastName">
+                <FormLabel color="black" htmlFor="lastName">
 
                   Apellido
                 </FormLabel>
@@ -108,7 +108,7 @@ const Register = () => {
                 </FormErrorMessage>
               </FormControl>
               <FormControl isRequired isInvalid={errors.email}>
-                <FormLabel color="white" htmlFor="email">
+                <FormLabel color="black" htmlFor="email">
                   Email
                 </FormLabel>
                 <Input
@@ -130,7 +130,7 @@ const Register = () => {
                 </FormErrorMessage>
               </FormControl>
               <FormControl isRequired isInvalid={errors.password}>
-                <FormLabel color="white" htmlFor="password">
+                <FormLabel color="black" htmlFor="password">
                   Contraseña
                 </FormLabel>
                 <Input
@@ -154,7 +154,7 @@ const Register = () => {
                 </FormErrorMessage>
               </FormControl>
               <FormControl isRequired isInvalid={errors.confirm_password}>
-                <FormLabel color="white" htmlFor="confirm_password">
+                <FormLabel color="black" htmlFor="confirm_password">
                   Confirma tu contraseña
                 </FormLabel>
                 <Input
@@ -186,7 +186,7 @@ const Register = () => {
                 variant="solid"
                 isLoading={isSubmitting}
                 loadingText="Creando cuenta..."
-                color="white"
+                color="black"
               >
                 Crear cuenta
               </Button>
