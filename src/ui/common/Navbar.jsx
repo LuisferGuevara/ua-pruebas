@@ -9,6 +9,7 @@ import {
   useBreakpointValue,
   Image,
   Input,
+  Divider,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { FiUser, FiMenu, FiSearch, FiShoppingCart } from "react-icons/fi";
@@ -98,6 +99,7 @@ export const Navbar = () => {
           )}
         </Flex>
       </Box>
+      <Divider borderColor="bg-accent-subtle" /*He puesto un divider para probar cómo quedaría al ser navbar, main y footer del mismo color. Yago */ />
     </Box>
   );
 };
