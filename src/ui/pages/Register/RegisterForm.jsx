@@ -167,10 +167,10 @@ const Register = () => {
                   focusBorderColor="primary.300"
                 />
                 <FormHelperText color="gray.200">
-                  Repetir contraseña
+                  Confirmar contraseña
                 </FormHelperText>
                 <FormErrorMessage>
-                  {errors.password && errors.confirm_password?.message}
+                  {errors.confirm_password && errors.confirm_password?.message}
                 </FormErrorMessage>
               </FormControl>
             </Stack>
