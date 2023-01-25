@@ -16,7 +16,7 @@ export const Login = () => (
     w="85%"
     h="100%"
   >
-    <Flex mx="auto" width="full" bg="red"  borderRadius="28px ">
+    <Flex mx="auto" width="full"   borderRadius="28px ">
       <Box 
         borderRadius="28px  0 0 28px "
          bgImage={`url(${myImage})`}

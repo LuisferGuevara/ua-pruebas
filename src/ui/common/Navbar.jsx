@@ -12,7 +12,7 @@ import {
 import * as React from "react";
 import { FiUser, FiMenu, FiSearch, FiShoppingCart } from "react-icons/fi";
 import logo from "../../assets/logoUA2.png";
-import { NavLink } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 
 export const Navbar = () => {
   const isDesktop = useBreakpointValue({ base: false, lg: true });
@@ -26,11 +26,21 @@ export const Navbar = () => {
           <HStack>
             {isDesktop && (
               <ButtonGroup spacing="2" p="8px" borderRadius="50px" bg="whitesmoke">
-                <NavLink route="/">Inicio</NavLink>
-                <Button>Cursos</Button>
-                <Button>Test Gratis</Button>
-                <Button>Tienda</Button>
-                <Button>Contacto</Button>
+                <Button as={NavLink} to="/">
+                  Inicio
+                </Button>
+                <Button as={NavLink} to="/courses">
+                  Cursos
+                </Button>
+                <Button as={NavLink} to="/freetests">
+                  Test Gratis
+                </Button>
+                <Button as={NavLink} to="/shop">
+                  Tienda
+                </Button>
+                <Button as={NavLink} to="/contact">
+                  Contacto
+                </Button>
               </ButtonGroup>
             )}
           </HStack>
@@ -38,8 +48,20 @@ export const Navbar = () => {
             <HStack spacing="4">
               <ButtonGroup color="white" variant="ghost" spacing="1">
                 <IconButton icon={<FiSearch fontSize="1.25rem" />} aria-label="Search" />
-                <IconButton icon={<FiShoppingCart fontSize="1.25rem" />} aria-label="Settings" />
-                <IconButton icon={<FiUser fontSize="1.25rem" />} aria-label="Help Center" />
+
+                <IconButton
+                  as={NavLink}
+                  to="/cart"
+                  icon={<FiShoppingCart fontSize="1.25rem" />}
+                  aria-label="Cart"
+                />
+
+                <IconButton
+                  as={NavLink}
+                  to="/myaccount"
+                  icon={<FiUser fontSize="1.25rem" />}
+                  aria-label="MyAccount"
+                />
               </ButtonGroup>
               {/* <Avatar boxSize="10" name="Christoph Winston" src="/* token.user.photo *" /> */}
             </HStack>

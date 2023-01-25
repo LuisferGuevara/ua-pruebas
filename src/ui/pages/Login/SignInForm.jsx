@@ -17,15 +17,14 @@ import { PasswordField } from "./PasswordField";
 export const SignInForm = (props) => {
 
   return (
-    <Stack spacing="8" {...props} minH="635px" maxH="700px" borderRadius="0 28px  28px 0">
+    <Stack spacing="8" {...props} minH="783px" borderRadius="0 28px  28px 0">
       <Stack spacing="6">
-
         <Stack
           spacing={{
             base: "2",
             md: "3",
           }}
-          textAlign="start"
+          textAlign="center"
         >
           <Heading
             size={useBreakpointValue({
