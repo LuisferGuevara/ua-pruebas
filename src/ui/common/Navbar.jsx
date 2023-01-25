@@ -8,14 +8,23 @@ import {
   IconButton,
   useBreakpointValue,
   Image,
+  Input,
 } from "@chakra-ui/react";
-import * as React from "react";
+import React, { useState } from "react";
 import { FiUser, FiMenu, FiSearch, FiShoppingCart } from "react-icons/fi";
-import logo from "../../assets/logoUA2.png";
+import logo from "../../assets/mario.png";
 import { NavLink } from "react-router-dom";
 
 export const Navbar = () => {
   const isDesktop = useBreakpointValue({ base: false, lg: true });
+
+  const [searchTerm, setSearchTerm] = useState("");
+  const [showInput, setShowInput] = useState(false);
+
+  function handleSearch() {
+    // hacer la función mamahuevos
+  }
+
   return (
     <Box as="section" w="85%" m="0 auto">
       <Box as="nav">
@@ -33,7 +42,7 @@ export const Navbar = () => {
                   Cursos
                 </Button>
                 <Button as={NavLink} to="/freetests">
-                  Test Gratis
+                  Tests Gratis
                 </Button>
                 <Button as={NavLink} to="/shop">
                   Tienda
@@ -47,8 +56,22 @@ export const Navbar = () => {
           {isDesktop ? (
             <HStack spacing="4">
               <ButtonGroup color="white" variant="ghost" spacing="1">
-                <IconButton icon={<FiSearch fontSize="1.25rem" />} aria-label="Search" />
-
+                <IconButton
+                  onClick={() => setShowInput(!showInput)}
+                  icon={<FiSearch fontSize="1.25rem" />}
+                  aria-label="Search"
+                />
+                <Input
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  placeholder="mamahuevos"
+                  display={showInput ? "block" : "none"}
+                  onKeyPress={(e) => {
+                    if (e.key === "Enter") {
+                      handleSearch();
+                    }
+                  }}
+                />
                 <IconButton
                   as={NavLink}
                   to="/cart"
@@ -58,7 +81,8 @@ export const Navbar = () => {
 
                 <IconButton
                   as={NavLink}
-                  to="/myaccount"
+                  // to="/myaccount"  --> Cuando podamos privatizar la ruta con el token
+                  to="/login"
                   icon={<FiUser fontSize="1.25rem" />}
                   aria-label="MyAccount"
                 />

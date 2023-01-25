@@ -1,47 +1,38 @@
-import {
-  Box,
-  Center,
-  DarkMode,
-  Flex,
-  Heading,
-  Stack,
-  Text,
-} from "@chakra-ui/react";
+import { Box, Center, DarkMode, Flex, Heading, Stack, Text } from "@chakra-ui/react";
 import * as React from "react";
-import myImage from "../../../assets/Poli.png";
-import RegisterForm from "./RegisterForm";
+import { SignInForm } from "../Login/SignInForm";
+import myImage from "../../../../../assets/Poli.png";
 
-export const Register = () => (
+export const Login = () => (
   <Flex
-    bgColor="#fff"
-    color="#222"
+    bgColor="whitesmoke"
     minH={{
       base: "auto",
       md: "100%",
     }}
     borderRadius="28px"
-    maxWidth= "1440px"
     m="20px auto"
     w="85%"
     h="100%"
   >
-    <Flex  mx="auto" width="full">
-      <Box
-        flex="1"
+    <Flex mx="auto" width="full"   borderRadius="28px ">
+      <Box 
         borderRadius="28px  0 0 28px "
+         bgImage={`url(${myImage})`}
+         bgPosition="30%"
+            bgSize="cover"
+           
+            objectFit="cover"
+        flex="1"
         display={{
           base: "none",
           md: "block",
         }}
       >
         <DarkMode>
-          <Flex 
-
-            bgPosition="30%"
-            bgImage={`url(${myImage})`}
-            bgSize="cover"
-            borderRadius="28px 0 0 28px"
-            objectFit="cover"
+          <Flex
+           
+            
             direction="column"
             px={{
               base: "4",
@@ -53,21 +44,11 @@ export const Register = () => (
             <Flex flex="1" align="left" mt="10">
               <Stack spacing="8">
                 <Stack spacing="0" textAlign="start">
-                <Heading
-                mb="-25px"
-                    fontSize="3em"
-                    color="white"
-                    textShadow="1px 2px 0 black"
-                  >
+                  <Heading mb="-25px" fontSize="3em" color="white" textShadow="1px 2px 0 black">
                     Comienza el
                   </Heading>
-                <Heading
-                    spacing="0"
-                    color="white"
-                    fontSize="6em"
-                    textShadow="1px 2px 0 black"
-                  >
-                  Desafío.
+                  <Heading spacing="0" color="white" fontSize="6em" textShadow="1px 2px 0 black">
+                    Desafío.
                   </Heading>
                   <Text
                     fontSize="lg"
@@ -87,7 +68,7 @@ export const Register = () => (
         </DarkMode>
       </Box>
       <Center flex="1">
-        <RegisterForm 
+        <SignInForm
           px={{
             base: "4",
             md: "8",
