@@ -1,20 +1,15 @@
 import {
-
   Box,
   Center,
   DarkMode,
   Flex,
   Heading,
-
   Stack,
   Text,
-
 } from "@chakra-ui/react";
 import * as React from "react";
-// import { Logo } from "./Logo";
 import { SignInForm } from "../Login/SignInForm";
 import myImage from "../../../assets/Poli.png";
-// import "./"
 
 export const Login = () => (
   <Flex
@@ -25,11 +20,13 @@ export const Login = () => (
     }}
     borderRadius="28px"
     maxWidth= "1440px"
-    m="0 auto"
+    m="20px auto"
     w="85%"
+    h="100%"
   >
-    <Flex maxW="8xl" mx="auto" width="full">
-      <Box
+    <Flex  mx="auto" width="full">
+      <Box  
+      borderRadius="28px  0 0 28px "
         flex="1"
         display={{
           base: "none",
@@ -38,6 +35,7 @@ export const Login = () => (
       >
         <DarkMode>
           <Flex 
+
             bgPosition="30%"
             bgImage={`url(${myImage})`}
             bgSize="cover"
@@ -94,7 +92,7 @@ export const Login = () => (
             md: "8",
           }}
           py={{
-            base: "12",
+            base: "24",
             md: "48",
           }}
           width="full"

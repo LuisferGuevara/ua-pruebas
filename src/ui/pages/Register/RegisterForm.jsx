@@ -12,6 +12,7 @@ import {
   Stack,
   Text,
   useBreakpointValue,
+
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import { Link /* useNavigate */ } from "react-router-dom";
@@ -23,6 +24,7 @@ const Register = () => {
     watch,
     formState: { errors, isSubmitting },
   } = useForm();
+
   // const navigate = useNavigate();
 
   function onSubmit(values) {
@@ -41,6 +43,7 @@ const Register = () => {
   return (
     <Container
       maxW="md"
+      borderRadius="0 28px  28px 0"
       py={{
         base: "6",
         md: "8",
@@ -52,6 +55,7 @@ const Register = () => {
             <Stack spacing="3" textAlign="center">
               <Heading
                 color="white"
+
                 size={useBreakpointValue({
                   base: "md",
                   md: "xl",
@@ -59,7 +63,7 @@ const Register = () => {
               >
                 Crea tu cuenta
               </Heading>
-              <Text color="gray.200">Empieza a hacer realidad tus sueños</Text>
+              <Text color="black">Empieza a hacer realidad tus sueños</Text>
             </Stack>
           </Stack>
           <Stack spacing="6">
@@ -87,6 +91,7 @@ const Register = () => {
               </FormControl>
               <FormControl isRequired isInvalid={errors.lastName}>
                 <FormLabel color="white" htmlFor="lastName">
+
                   Apellido
                 </FormLabel>
                 <Input
@@ -175,6 +180,7 @@ const Register = () => {
               </FormControl>
             </Stack>
             <Stack spacing="2">
+
               <Button
                 type="submit"
                 variant="solid"
@@ -186,13 +192,14 @@ const Register = () => {
               </Button>
             </Stack>
           </Stack>
-          <HStack justify="center" spacing="2">
-            <Text fontSize="sm" color="white">
+          <HStack justify="space-evenly" spacing="2">
+            <Text fontSize="sm" color="black">
               Ya estás registrado?
             </Text>
-            <Button as={Link} to="/login" variant="link" size="sm">
-              Log in
-            </Button>
+            <NavLink  to="/login"  color="red" >
+          <Text color="#3182ce" fontWeight="medium" >Iniciar Sesión</Text>
+          </NavLink>
+
           </HStack>
         </Stack>
       </form>
@@ -201,3 +208,4 @@ const Register = () => {
 };
 
 export default Register;
+

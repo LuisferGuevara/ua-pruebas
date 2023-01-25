@@ -1,14 +1,22 @@
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import { Navbar } from './ui/common/Navbar';
 import { Login } from './ui/pages/Login/Login';
-import Register from './ui/pages/Register/RegisterForm';
+// import Register from './ui/pages/Register/RegisterForm';
+import { Footer } from './ui/common/Footer/Footer';
+import { Registro } from './ui/pages/Register/Register';
 
 function App() {
   return (
     <div className="app">
-    <h1>AQUI VA LA CABECERA</h1>
-    <Login/>
-    <Register/>
-    <h1>AQUI VA el FOOTER</h1>
+    <Navbar />
+    <Routes>
+      <Route path="/login" element={<Login/>}/>
+      <Route path="/register" element={<Registro/>}/>
+    </Routes>
+    {/* <Login/> */}
+    <Footer/>
+    {/* <Register/> */}
     </div>
   );
 }
