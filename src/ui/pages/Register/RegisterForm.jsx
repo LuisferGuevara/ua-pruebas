@@ -12,25 +12,31 @@ import {
   Stack,
   Text,
   useBreakpointValue,
-} from '@chakra-ui/react';
-import { useForm } from 'react-hook-form';
-import { Link, NavLink, /* useNavigate */ } from 'react-router-dom';
 
-const RegisterForm = () => {
-  const { register, handleSubmit, formState: { errors, isSubmitting}, } = useForm();
+} from "@chakra-ui/react";
+import { useForm } from "react-hook-form";
+import { Link /* useNavigate */ } from "react-router-dom";
+
+const Register = () => {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors, isSubmitting },
+  } = useForm();
+
+  // const navigate = useNavigate();
 
   function onSubmit(values) {
     return new Promise((resolve) => {
       setTimeout(() => {
-        alert(JSON.stringify(values, null, 2))
-        resolve()
-      }, 3000)
-    })
+        alert(JSON.stringify(values, null, 2));
+        resolve();
+      }, 2000);
+    });
   }
-  // const navigate = useNavigate();
 
-
- /*  const submit = user => {
+  /*  const submit = (user) => {
     // registerUseCase(user);
   }; */
 
@@ -39,19 +45,20 @@ const RegisterForm = () => {
       maxW="md"
       borderRadius="0 28px  28px 0"
       py={{
-        base: '6',
-        md: '8',
+        base: "6",
+        md: "8",
       }}
     >
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Stack spacing="8"  minH="635px" maxH="700px">
-          <Stack spacing="6" align="center" color="black">
-            <Stack spacing="3" textAlign="center" color="black">
-              <Heading color="black"
+        <Stack spacing="8" color="black">
+          <Stack spacing="6" align="center">
+            <Stack spacing="3" textAlign="center">
+              <Heading
+                color="white"
 
                 size={useBreakpointValue({
-                  base: 'md',
-                  md: 'xl',
+                  base: "md",
+                  md: "xl",
                 })}
               >
                 Crea tu cuenta
@@ -61,42 +68,111 @@ const RegisterForm = () => {
           </Stack>
           <Stack spacing="6">
             <Stack spacing="5">
-              <FormControl isInvalid={errors.name} >
-                <FormLabel color="black" htmlFor="name">
+              <FormControl isRequired isInvalid={errors.name}>
+                <FormLabel color="white" htmlFor="name">
                   Nombre
                 </FormLabel>
-                <Input bg="gray.100" id="name" placeholder='nombre'{...register('name', {required: 'Introduce un nombre', minLength:12 })} focusBorderColor="primary.300" />
+                <Input bg="gray.100" id="name" placeholder='nombre'{...register('name', {required: 'Introduce un nombre', minLength: })} focusBorderColor="primary.300" />
               </FormControl>
-              <FormControl isRequired>
-                <FormLabel color="black" htmlFor="name">
+              <FormControl isRequired isInvalid={errors.lastName}>
+                <FormLabel color="white" htmlFor="lastName">
+
                   Apellido
                 </FormLabel>
-                <Input bg="gray.100" id="name" type="text" {...register('lastName')} focusBorderColor="primary.300" />
+                <Input
+                  bg="gray.100"
+                  id="name"
+                  type="text"
+                  {...register("lastName", {
+                    required: "Introduce un apellido",
+                  })}
+                  focusBorderColor="primary.300"
+                />
+                <FormErrorMessage>
+                  {errors.lastName && errors.lastName.message}
+                </FormErrorMessage>
               </FormControl>
-              <FormControl isRequired>
-                <FormLabel color="black" htmlFor="email">
+              <FormControl isRequired isInvalid={errors.email}>
+                <FormLabel color="white" htmlFor="email">
                   Email
                 </FormLabel>
-                <Input bg="gray.100" id="email" type="email" {...register('email')} focusBorderColor="primary.300" />
+                <Input
+                  bg="gray.100"
+                  id="email"
+                  type="email"
+                  {...register("email", {
+                    required: "Este campo es requerido",
+                    /* error: "Introduce un formato válido", */
+                    pattern: {
+                      value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                      message: 'Introduce una dirección de correo válida',
+                  },
+                  })}
+                  focusBorderColor="primary.300"
+                />
+                <FormErrorMessage>
+                  {errors.email && errors.email.message}
+                </FormErrorMessage>
               </FormControl>
-              <FormControl isRequired>
-                <FormLabel color="black" htmlFor="password">
+              <FormControl isRequired isInvalid={errors.password}>
+                <FormLabel color="white" htmlFor="password">
                   Contraseña
                 </FormLabel>
                 <Input
                   bg="gray.100"
                   id="password"
                   type="password"
-                  {...register('password')}
+                  {...register("password", {
+                    required: "Este campo es requerido",
+                    pattern: {
+                      value: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/,
+                      message: 'La contraseña debe tener entre 8 y 16 caracteres, al menos un dígito, una minúscula y una mayúscula',
+                  },
+                  })}
                   focusBorderColor="primary.300"
                 />
-                <FormHelperText color="black">
-                  Como mínimo 12 carácteres de longitud, 1 número y 1 símbolo
+                <FormHelperText color="gray.200">
+                La contraseña debe tener entre 8 y 16 caracteres, al menos un dígito, una minúscula y una mayúscula
                 </FormHelperText>
+                <FormErrorMessage>
+                  {errors.password && errors.password?.message}
+                </FormErrorMessage>
+              </FormControl>
+              <FormControl isRequired isInvalid={errors.confirm_password}>
+                <FormLabel color="white" htmlFor="confirm_password">
+                  Confirma tu contraseña
+                </FormLabel>
+                <Input
+                  bg="gray.100"
+                  id="password"
+                  type="password"
+                  {...register("confirm_password", {
+                    required: "Este campo es requerido",
+                    validate: (val) => {
+                      if (watch("password") !== val) {
+                        return "La contraseña de verificación no coincide"
+                      }
+                    }
+                  })}
+                  focusBorderColor="primary.300"
+                />
+                <FormHelperText color="gray.200">
+                  Confirmar contraseña
+                </FormHelperText>
+                <FormErrorMessage>
+                  {errors.confirm_password && errors.confirm_password?.message}
+                </FormErrorMessage>
               </FormControl>
             </Stack>
             <Stack spacing="2">
-              <Button bgColor="#23375B" color="white "type="submit" variant="solid" loadingText="Creando cuenta...">
+
+              <Button
+                type="submit"
+                variant="solid"
+                isLoading={isSubmitting}
+                loadingText="Creando cuenta..."
+                color="white"
+              >
                 Crear cuenta
               </Button>
             </Stack>
@@ -116,4 +192,5 @@ const RegisterForm = () => {
   );
 };
 
-export default RegisterForm;
+export default Register;
+
