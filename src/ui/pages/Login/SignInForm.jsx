@@ -11,18 +11,15 @@ import {
   useBreakpointValue,
 } from "@chakra-ui/react";
 import * as React from "react";
-import { LogoIcon } from "./Logo";
+import { Link, NavLink } from "react-router-dom";
 import { PasswordField } from "./PasswordField";
 
 export const SignInForm = (props) => {
-  const isMobile = useBreakpointValue({
-    base: true,
-    md: false,
-  });
+
   return (
-    <Stack spacing="8" {...props}>
+    <Stack spacing="8" {...props} minH="635px" maxH="700px" borderRadius="0 28px  28px 0">
       <Stack spacing="6">
-        {isMobile && <LogoIcon />}
+
         <Stack
           spacing={{
             base: "2",
@@ -65,11 +62,11 @@ export const SignInForm = (props) => {
         <Stack spacing="4">
           <Button bgColor="#23375B" color="white" variant="primary">INICIAR SESIÓN</Button>
         </Stack>
-        <HStack spacing="1" justify="center">
+        <HStack spacing="1" justify="space-evenly">
           <Text color="#23375B">¿No tienes una cuenta aún?</Text>
-          <Button variant="link" colorScheme="blue">
-            Regístrate
-          </Button>
+          <NavLink  to="/register"  color="red" >
+          <Text color="#3182ce" fontWeight="medium" >Regístrate</Text>
+          </NavLink>
         </HStack>
       </Stack>
     </Stack>
