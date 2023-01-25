@@ -65,7 +65,7 @@ const RegisterForm = () => {
                 <FormLabel color="black" htmlFor="name">
                   Nombre
                 </FormLabel>
-                <Input bg="gray.100" id="name" placeholder='nombre'{...register('name', {required: 'Introduce un nombre', minLength: })} focusBorderColor="primary.300" />
+                <Input bg="gray.100" id="name" placeholder='nombre'{...register('name', {required: 'Introduce un nombre', minLength:12 })} focusBorderColor="primary.300" />
               </FormControl>
               <FormControl isRequired>
                 <FormLabel color="black" htmlFor="name">
@@ -103,7 +103,7 @@ const RegisterForm = () => {
           </Stack>
           <HStack justify="space-evenly" spacing="2">
             <Text fontSize="sm" color="black">
-              Ya estás registrado?
+              ¿Ya estás registrado?
             </Text>
             <NavLink  to="/login"  color="red" >
           <Text color="#3182ce" fontWeight="medium" >Iniciar Sesión</Text>

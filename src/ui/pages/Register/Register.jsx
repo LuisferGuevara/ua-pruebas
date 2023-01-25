@@ -95,7 +95,7 @@ export const Registro = () => (
           }}
           py={{
             base: "12",
-            md: "48",
+            md: "12",
           }}
           width="full"
           maxW="md"

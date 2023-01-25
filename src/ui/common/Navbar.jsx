@@ -12,6 +12,7 @@ import {
 import * as React from "react";
 import { FiUser, FiMenu, FiSearch, FiShoppingCart } from "react-icons/fi";
 import logo from "../../assets/logoUA2.png";
+import { NavLink } from 'react-router-dom';
 
 export const Navbar = () => {
   const isDesktop = useBreakpointValue({ base: false, lg: true });
@@ -25,7 +26,7 @@ export const Navbar = () => {
           <HStack>
             {isDesktop && (
               <ButtonGroup spacing="2" p="8px" borderRadius="50px" bg="whitesmoke">
-                <Button>Inicio</Button>
+                <NavLink route="/">Inicio</NavLink>
                 <Button>Cursos</Button>
                 <Button>Test Gratis</Button>
                 <Button>Tienda</Button>

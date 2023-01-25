@@ -9,10 +9,13 @@ import {
     Stack,
     Flex,
     Text,
+    HStack,
+    Image
   } from '@chakra-ui/react'
   import * as React from 'react'
   import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa'
-  import { Logo } from './Logo'
+  import logo from '../../../assets/logoUA.jpg'
+ /*  import { Logo } from './Logo' */
   import { links } from './_data'
   
   export const Footer = () => (
@@ -25,9 +28,13 @@ import {
             }}
             align="start"
           >
-            <Logo />
+          <HStack>
+          <Image src={logo} alt="Dan Abramov" />
+          </HStack>
+            <Flex display="flex" direction="column" >
             <Text fontSize="lg" fontWeight="bold" color="white" >Uniforme Azul</Text>
             <Text color="white">Academia online para mejorar tu futuro profesional como policía nacional, tu inglés y ¡mucho más!</Text>
+            </Flex>
           </Stack>
       </Box>
       <Box as="footer" role="contentinfo" bg="#121212" w="100%" m="0 auto">
