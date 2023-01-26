@@ -8,15 +8,15 @@ export const links = [
         },
         {
           label: 'Cursos',
-          href: '#',
+          href: '/courses',
         },
         {
           label: 'Tienda',
-          href: '#',
+          href: '/shop',
         },
         {
-          label: 'Contact',
-          href: '#',
+          label: 'Contacto',
+          href: '/contact',
         },
       ],
     },
@@ -45,12 +45,14 @@ export const links = [
       title: 'ENLACES',
       links: [
         {
-          label: 'BOE.',
-          href: '#',
+          label: 'B.O.E.',
+          href: 'https://www.boe.es/',
+          //target: '_blank',
         },
         {
           label: 'POLICIA.es',
-          href: '#',
+          href: 'https://www.policia.es/_es/index.php',
+          target: "_blank", //Buscar el equilvalente a esta propiedad
         },
       ],
     },

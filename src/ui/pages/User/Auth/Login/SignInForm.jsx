@@ -11,7 +11,7 @@ import {
   useBreakpointValue,
 } from "@chakra-ui/react";
 import * as React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { /* Link, */ NavLink } from "react-router-dom";
 import { PasswordField } from "./PasswordField";
 
 export const SignInForm = (props) => {
