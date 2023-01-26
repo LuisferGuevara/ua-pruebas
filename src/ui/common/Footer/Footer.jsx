@@ -138,24 +138,27 @@
   import {
     Box,
     Button,
-    ButtonGroup,
+    // ButtonGroup,
     Container,
     Divider,
-    IconButton,
+    Flex,
+    // IconButton,
+    Img,
     SimpleGrid,
     Stack,
     Text,
   } from '@chakra-ui/react'
   import * as React from 'react'
-  import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa'
-  import { Logo } from './Logo'
+  // import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa'
   import { links } from './_data'
+  import logo from '../../../assets/mario.png'
   
   export const Footer = () => (
-    <Box bg="bg-accent" color="on-acccent">
-      <Container as="footer" role="contentinfo">
+    <Box as='section' bg="accent" color="on-acccent" w='85%' m="0 auto">
+      <Divider borderColor="bg-accent-subtle" />
+      <Flex as="footer" role="contentinfo" flexDir="column">
         <Stack
-          justify="space-between"
+          justify="space-around"
           align="start"
           direction={{
             base: 'column',
@@ -163,7 +166,7 @@
           }}
           py={{
             base: '12',
-            md: '16',
+            md: '14',
           }}
           spacing="8"
         >
@@ -172,15 +175,16 @@
               base: '6',
               md: '8',
             }}
-            align="start"
+            align="center"
+            maxW='600px'
           >
-            <Logo />
-            <Text color="on-accent-muted">Create beautiful websites remarkably fast.</Text>
+            <Img src={logo} w='60%'/>
+            <Text color="white" fontSize={'xl'} fontWeight='bold'>Academia online para mejorar tu futuro profesional como policía nacional, tu inglés y ¡mucho más!</Text>
           </Stack>
           <SimpleGrid
             columns={{
               base: 2,
-              md: 4,
+              md: 3, //He cambiado a 3 columnas. La 4ª estaba reflejada para app
             }}
             gap="8"
             width={{
@@ -191,17 +195,17 @@
             {links.map((group, idx) => (
               <Stack
                 key={idx}
-                spacing="4"
+                spacing="8"
                 minW={{
                   lg: '40',
                 }}
               >
-                <Text fontSize="sm" fontWeight="semibold" color="on-accent-subtle">
+                <Text fontSize="xl" fontWeight="semibold" color="on-accent-subtle">
                   {group.title}
                 </Text>
-                <Stack spacing="3" shouldWrapChildren>
+                <Stack spacing="2" shouldWrapChildren>
                   {group.links.map((link, idx) => (
-                    <Button key={idx} as="a" variant="link-on-accent" href={link.href}>
+                    <Button fontSize='large' key={idx} as="a" variant="link-on-accent" href={link.href}>
                       {link.label}
                     </Button>
                   ))}
@@ -221,10 +225,10 @@
           }}
           align="center"
         >
-          <Text fontSize="sm" color="on-accent-subtle">
-            &copy; {new Date().getFullYear()} Chakra UI Pro, Inc. All rights reserved.
+          <Text fontSize="sm" color="white">
+            &copy; {new Date().getFullYear()} Rocket418, Inc. Todos los derechos reservados.
           </Text>
-          <ButtonGroup variant="ghost-on-accent">
+         {/*  <ButtonGroup variant="ghost-on-accent">
             <IconButton
               as="a"
               href="#"
@@ -238,9 +242,9 @@
               aria-label="Twitter"
               icon={<FaTwitter fontSize="1.25rem" />}
             />
-          </ButtonGroup>
+          </ButtonGroup> */}
         </Stack>
-      </Container>
+      </Flex>
     </Box>
   )
   
