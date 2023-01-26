@@ -12,7 +12,7 @@ import {
 <<<<<<< HEAD
   Collapse,
 =======
-  Divider,
+  // Divider,
 >>>>>>> 63f44a9ee57f3a0f51a167f72395103b55371cd9
 } from "@chakra-ui/react";
 import React, { useState } from "react";
