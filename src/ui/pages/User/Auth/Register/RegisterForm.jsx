@@ -211,6 +211,8 @@ import {
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import { /* Link, */ NavLink /* useNavigate */ } from "react-router-dom";
+import { RegisterPasswordField } from "./RegisterPasswordField";
+
 
 const Register = () => {
   const {
@@ -317,7 +319,7 @@ const Register = () => {
                 />
                 <FormErrorMessage>{errors.email && errors.email.message}</FormErrorMessage>
               </FormControl>
-              <FormControl isRequired isInvalid={errors.password}>
+             {/*  <FormControl isRequired isInvalid={errors.password}>
                 <FormLabel color="#23375B" htmlFor="password">
                   Contraseña
                 </FormLabel>
@@ -365,11 +367,13 @@ const Register = () => {
                 <FormErrorMessage>
                   {errors.confirm_password && errors.confirm_password?.message}
                 </FormErrorMessage>
-              </FormControl>
+              </FormControl> */}
+              {/* <RegisterPasswordField /> */}
             </Stack>
             <Stack spacing="2">
               <Button
                 type="submit"
+                _hover={":none"}
                 variant="solid"
                 isLoading={isSubmitting}
                 loadingText="Creando cuenta..."

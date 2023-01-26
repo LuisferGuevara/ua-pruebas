@@ -4,7 +4,7 @@ export const links = [
       links: [
         {
           label: 'Sobre nosotros',
-          href: '#',
+          href: '/about',
         },
         {
           label: 'Cursos',
@@ -25,19 +25,19 @@ export const links = [
       links: [
         {
           label: 'Aviso legal',
-          href: '#',
+          href: '/LegalNotice',
         },
         {
           label: 'Política de privacidad',
-          href: '#',
+          href: '/privacy',
         },
         {
           label: 'Términos y condiciones',
-          href: '#',
+          href: '/termsconditions',
         },
         {
           label: 'Política de cookies',
-          href: '#',
+          href: '/cookies',
         },
       ],
     },
@@ -47,12 +47,12 @@ export const links = [
         {
           label: 'B.O.E.',
           href: 'https://www.boe.es/',
-          //target: '_blank',
+          target: "_blank"
         },
         {
           label: 'POLICIA.es',
           href: 'https://www.policia.es/_es/index.php',
-          target: "_blank", //Buscar el equilvalente a esta propiedad
+          target: "_blank"
         },
       ],
     },

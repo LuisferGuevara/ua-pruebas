@@ -139,7 +139,7 @@
     Box,
     Button,
     // ButtonGroup,
-    Container,
+    // Container,
     Divider,
     Flex,
     // IconButton,
@@ -154,9 +154,9 @@
   import logo from '../../../assets/mario.png'
   
   export const Footer = () => (
-    <Box as='section' bg="accent" color="on-acccent" w='85%' m="0 auto">
-      <Divider borderColor="bg-accent-subtle" />
-      <Flex as="footer" role="contentinfo" flexDir="column">
+    <Box as='section' bg="accent" color="on-acccent" w='100%' m="0 auto" bgColor='#121212'>
+      <Divider borderColor="bg-accent-subtle"/>
+      <Flex as="footer" role="contentinfo" flexDir="column" maxW="1440px" w="85%" m="0 auto">
         <Stack
           justify="space-around"
           align="start"
@@ -178,7 +178,7 @@
             align="center"
             maxW='600px'
           >
-            <Img src={logo} w='60%'/>
+            <Img src={logo} w='60%' opacity='100%'/>
             <Text color="white" fontSize={'xl'} fontWeight='bold'>Academia online para mejorar tu futuro profesional como policía nacional, tu inglés y ¡mucho más!</Text>
           </Stack>
           <SimpleGrid
@@ -200,14 +200,14 @@
                   lg: '40',
                 }}
               >
-                <Text fontSize="xl" fontWeight="semibold" color="on-accent-subtle">
+                <Text fontSize="xl" fontWeight="semibold" color="#F5F5F">
                   {group.title}
                 </Text>
                 <Stack spacing="2" shouldWrapChildren>
-                  {group.links.map((link, idx) => (
-                    <Button fontSize='large' key={idx} as="a" variant="link-on-accent" href={link.href}>
+                                  {group.links.map((link, idx) => (
+                    <Button fontSize='large' color="#FFFAF0" key={idx} as="a"  target="" variant="link-on-accent" href={link.href} _hover={{}}>
                       {link.label}
-                    </Button>
+                    </Button> 
                   ))}
                 </Stack>
               </Stack>

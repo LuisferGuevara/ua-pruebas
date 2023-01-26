@@ -11,12 +11,12 @@ import {
   useBreakpointValue,
 } from "@chakra-ui/react";
 import * as React from "react";
-import { /* Link, */ NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { PasswordField } from "./PasswordField";
 
 export const SignInForm = (props) => {
   return (
-    <Stack spacing="8" {...props} minH="697px" borderRadius="0 28px  28px 0" bg="red">
+    <Stack spacing="8" {...props} minH="697px" borderRadius="0 28px  28px 0"  >
       <Stack spacing="6">
         <Stack
           spacing={{

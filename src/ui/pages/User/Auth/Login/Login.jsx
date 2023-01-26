@@ -14,6 +14,7 @@ export const Login = () => (
     m="20px auto"
     w="85%"
     h="100%"
+    maxWidth="1440px"
   >
     <Flex mx="auto" width="full"   borderRadius="28px ">
       <Box 

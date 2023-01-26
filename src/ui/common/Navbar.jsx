@@ -29,23 +29,20 @@ export const Navbar = () => {
   }
 
   return (
-    <Box as="section" w="85%" m="0 auto" color="#23375B">
+    <Box as="section" w="85%" m="0 auto" color="#23375B" maxWidth="1440px">
       <Box as="nav">
         <Flex justify="space-between" py="30px">
           <HStack>
-            <Image src={logo} alt="Dan Abramov" />
+            <Image src={logo} alt="Dan Abramov" w="200px" />
           </HStack>
           <HStack>
             {isDesktop && (
-              <ButtonGroup
-                spacing="2"
-                p="8px"
-                borderRadius="50px"
-                bg="whitesmoke"
-              >
+              <ButtonGroup spacing="2" p="8px" borderRadius="50px" bg="whitesmoke">
                 <Button
                   as={NavLink}
                   to="/"
+                  // _focus={{outline: "none"}}
+                  // _hover={{bg: "none"}}
                   _hover={{
                     bg: "#23375B",
                     color: "white",
@@ -108,7 +105,7 @@ export const Navbar = () => {
           </HStack>
           {isDesktop ? (
             <HStack spacing="4">
-              <ButtonGroup color="white" variant="ghost" spacing="1">
+              <ButtonGroup color="white"  variant="ghost" spacing="1">
                 <Flex>
                   <Input
                     value={searchTerm}
@@ -148,28 +145,125 @@ export const Navbar = () => {
               {/* <Avatar boxSize="10" name="Christoph Winston" src="/* token.user.photo *" /> */}
             </HStack>
           ) : (
-            <Box display="flex" position="relative">
+            <Box display="flex" position="relative" zIndex="99">
               <Collapse
                 in={isOpen}
-                zIndex="9999"
-                style={{ position: "absolute", top: "0px", right: "50px" }}
-              >
+                style={{ position: "absolute", top: "0px", right: "50px"}}
+                >
                 <Box
                   display="flex"
                   alignItems="center"
+                  
                   flexDirection="column"
                   bg="whitesmoke"
                   borderRadius="10px"
+                  w="300px"
                 >
-                  <Button>Option 1</Button>
-                  <Button>Option 2</Button>
-                  <Button>Option 3</Button>
-                  <Button>Option 1</Button>
-                  <Button>Option 2</Button>
-                  <Button>Option 3</Button>
-                  <Button>Option 1</Button>
-                  <Button>Option 2</Button>
-                  <Button>Option 3</Button>
+                  <Flex>
+                    <Input
+                      value={searchTerm}
+                      textAlign="center"
+                      // onChange={(e) => setSearchTerm(e.target.value)}
+                      placeholder="Buscar"
+                      // display={showInput ? "block" : "none"}
+                      onKeyPress={(e) => {
+                        if (e.key === "Enter") {
+                          handleSearch();
+                        }
+                      }}
+                    />
+                    {/* <IconButton
+                    onClick={() => setShowInput(!showInput)}
+                    icon={<FiSearch fontSize="1.25rem" />}
+                    aria-label="Search"
+                    borderRadius="50px"
+                  /> */}
+                  </Flex>
+                  <Button
+                    as={NavLink}
+                    to="/"
+                    
+                    _hover={{
+                      bg: "#23375B",
+                      color: "white",
+                      borderRadius: "50px",
+                      // transform: "scale(1.05)"
+                    }}
+                  >
+                    Inicio
+                  </Button>
+                  <Button
+                    as={NavLink}
+                    to="/courses"
+                    _hover={{
+                      bg: "#23375B",
+                      color: "",
+                      borderRadius: "50px",
+                      // transform: "scale(1.05)"
+                    }}
+                  >
+                    Cursos
+                  </Button>
+                  <Button
+                    as={NavLink}
+                    to="/freetests"
+                    _hover={{
+                      bg: "#23375B",
+                      color: "white",
+                      borderRadius: "50px",
+                      // transform: "scale(1.05)"
+                    }}
+                  >
+                    Tests Gratis
+                  </Button>
+                  <Button
+                    as={NavLink}
+                    to="/shop"
+                    _hover={{
+                      bg: "#23375B",
+                      color: "white",
+                      borderRadius: "50px",
+                      // transform: "scale(1.05)"
+                    }}
+                  >
+                    Tienda
+                  </Button>
+                  <Button
+                    as={NavLink}
+                    to="/contact"
+                    _hover={{
+                      bg: "#23375B",
+                      color: "white",
+                      borderRadius: "50px",
+                      // transform: "scale(1.05)"
+                    }}
+                  >
+                    Contacto
+                  </Button>
+                  <Button
+                    as={NavLink}
+                    to="/cart"
+                    _hover={{
+                      bg: "#23375B",
+                      color: "white",
+                      borderRadius: "50px",
+                      // transform: "scale(1.05)"
+                    }}
+                  >
+                    Carrito
+                  </Button>
+                  <Button
+                    as={NavLink}
+                    to="/login"
+                    _hover={{
+                      bg: "#23375B",
+                      color: "white",
+                      borderRadius: "50px",
+                      // transform: "scale(1.05)"
+                    }}
+                  >
+                    Mi cuenta
+                  </Button>
                 </Box>
               </Collapse>
               <IconButton
@@ -177,13 +271,16 @@ export const Navbar = () => {
                 icon={<FiMenu fontSize="1.25rem" />}
                 aria-label="Open Menu"
                 relative
+                bg="white"
                 onClick={() => setIsOpen(!isOpen)}
               />
             </Box>
           )}
         </Flex>
       </Box>
-      <Divider borderColor="bg-accent-subtle" /*He puesto un divider para probar cómo quedaría al ser navbar, main y footer del mismo color. Yago */ />
+      <Divider
+        borderColor="#2a3d60" /*He puesto un divider para probar cómo quedaría al ser navbar, main y footer del mismo color. Yago */
+      />
     </Box>
   );
 };
