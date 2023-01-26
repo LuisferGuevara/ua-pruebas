@@ -215,7 +215,7 @@ import {
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { /* Link, */ NavLink /* useNavigate */ } from "react-router-dom";
-import { HiEye, HiEyeOff } from 'react-icons/hi';
+import { HiEye, HiEyeOff } from "react-icons/hi";
 
 const Register = () => {
   const {
@@ -277,6 +277,9 @@ const Register = () => {
                   bg="gray.100"
                   id="name"
                   type="text"
+                  color="#23375B"
+                  border="1px solid #23375B"
+                  borderRadius="8px"
                   {...register("name", {
                     required: "Introduce un nombre",
                     minLength: {
@@ -298,6 +301,9 @@ const Register = () => {
                   bg="gray.100"
                   id="name"
                   type="text"
+                  color="#23375B"
+                  border="1px solid #23375B"
+                  borderRadius="8px"
                   {...register("lastName", {
                     required: "Introduce un apellido",
                   })}
@@ -315,6 +321,9 @@ const Register = () => {
                   bg="gray.100"
                   id="email"
                   type="email"
+                  color="#23375B"
+                  border="1px solid #23375B"
+                  borderRadius="8px"
                   {...register("email", {
                     required: "Este campo es requerido",
                     /* error: "Introduce un formato válido", */
@@ -348,6 +357,9 @@ const Register = () => {
                     bg="gray.100"
                     id="password"
                     type={isHidden ? "password" : "text"}
+                    color="#23375B"
+                    border="1px solid #23375B"
+                    borderRadius="8px"
                     {...register("password", {
                       required: "Este campo es requerido",
                       pattern: {
@@ -381,20 +393,23 @@ const Register = () => {
                       {isHidden ? "Mostrar contraseñas" : "Ocultar contraseñas"}
                     </IconButton>
                   </InputRightElement>
-                <Input
-                  bg="gray.100"
-                  id="password"
-                  type={isHidden ? "password" : "text"}
-                  {...register("confirm_password", {
-                    required: "Este campo es requerido",
-                    validate: (val) => {
-                      if (watch("password") !== val) {
-                        return "La contraseña de verificación no coincide";
-                      }
-                    },
-                  })}
-                  focusBordercolor="primary.300"
-                />
+                  <Input
+                    bg="gray.100"
+                    id="password"
+                    type={isHidden ? "password" : "text"}
+                    color="#23375B"
+                    border="1px solid #23375B"
+                    borderRadius="8px"
+                    {...register("confirm_password", {
+                      required: "Este campo es requerido",
+                      validate: (val) => {
+                        if (watch("password") !== val) {
+                          return "La contraseña de verificación no coincide";
+                        }
+                      },
+                    })}
+                    focusBordercolor="primary.300"
+                  />
                 </InputGroup>
                 <FormHelperText color="#23375B" align="start">
                   Confirmar contraseña

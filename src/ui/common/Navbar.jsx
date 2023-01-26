@@ -32,7 +32,7 @@ export const Navbar = () => {
     <Box as="section" w="85%" m="0 auto" color="#23375B" maxWidth="1440px">
       <Box as="nav">
         <Flex justify="space-between" py="30px">
-          <Flex bg="salmon">
+          <Flex>
             <NavLink to="/" >
               <Image src={logo} alt="Dan Abramov" w="200px" objectFit="contain" h="100%"/>
             </NavLink>

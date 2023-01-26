@@ -5,8 +5,12 @@
   background-color: #2a3d60;
   margin: 0 auto;
 }
-.app  span, p {
+.app p {
   color: #282c34;
+}
+
+.app span {
+  color: red
 }
 
 .app-logo {
