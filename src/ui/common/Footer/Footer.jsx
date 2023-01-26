@@ -151,7 +151,7 @@
   import * as React from 'react'
   // import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa'
   import { links } from './_data'
-  import logo from '../../../assets/mario.png'
+  import logo from '../../../assets/logotipo-horizontal-blanco.png'
   
   export const Footer = () => (
     <Box as='section' bg="accent" color="on-acccent" w='100%' m="0 auto" bgColor='#121212'>

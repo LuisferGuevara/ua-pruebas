@@ -208,11 +208,14 @@ import {
   Stack,
   Text,
   useBreakpointValue,
+  InputGroup,
+  InputRightElement,
+  IconButton,
 } from "@chakra-ui/react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { /* Link, */ NavLink /* useNavigate */ } from "react-router-dom";
-import { RegisterPasswordField } from "./RegisterPasswordField";
-
+import { HiEye, HiEyeOff } from 'react-icons/hi';
 
 const Register = () => {
   const {
@@ -232,6 +235,8 @@ const Register = () => {
       }, 2000);
     });
   }
+
+  const [isHidden, setIsHidden] = useState(true);
 
   /*  const submit = (user) => {
     // registerUseCase(user);
@@ -281,7 +286,9 @@ const Register = () => {
                   })}
                   focusBordercolor="primary.300"
                 />
-                <FormErrorMessage>{errors.name && errors.name.message}</FormErrorMessage>
+                <FormErrorMessage>
+                  {errors.name && errors.name.message}
+                </FormErrorMessage>
               </FormControl>
               <FormControl isRequired isInvalid={errors.lastName}>
                 <FormLabel color="#23375B" htmlFor="lastName">
@@ -296,7 +303,9 @@ const Register = () => {
                   })}
                   focusBordercolor="primary.300"
                 />
-                <FormErrorMessage>{errors.lastName && errors.lastName.message}</FormErrorMessage>
+                <FormErrorMessage>
+                  {errors.lastName && errors.lastName.message}
+                </FormErrorMessage>
               </FormControl>
               <FormControl isRequired isInvalid={errors.email}>
                 <FormLabel color="#23375B" htmlFor="email">
@@ -317,40 +326,65 @@ const Register = () => {
                   })}
                   focusBordercolor="primary.300"
                 />
-                <FormErrorMessage>{errors.email && errors.email.message}</FormErrorMessage>
+                <FormErrorMessage>
+                  {errors.email && errors.email.message}
+                </FormErrorMessage>
               </FormControl>
-             {/*  <FormControl isRequired isInvalid={errors.password}>
+              <FormControl isRequired isInvalid={errors.password}>
                 <FormLabel color="#23375B" htmlFor="password">
                   Contraseña
                 </FormLabel>
-                <Input
-                  bg="gray.100"
-                  id="password"
-                  type="password"
-                  {...register("password", {
-                    required: "Este campo es requerido",
-                    pattern: {
-                      value: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/,
-                      message:
-                        "La contraseña debe tener entre 8 y 16 caracteres, al menos un dígito, una minúscula y una mayúscula",
-                    },
-                  })}
-                  focusBordercolor="primary.300"
-                />
+                <InputGroup>
+                  <InputRightElement>
+                    <IconButton
+                      onClick={() => setIsHidden(!isHidden)}
+                      color="#23375B"
+                      icon={isHidden ? <HiEyeOff /> : <HiEye />}
+                    >
+                      {isHidden ? "Mostrar contraseñas" : "Ocultar contraseñas"}
+                    </IconButton>
+                  </InputRightElement>
+                  <Input
+                    bg="gray.100"
+                    id="password"
+                    type={isHidden ? "password" : "text"}
+                    {...register("password", {
+                      required: "Este campo es requerido",
+                      pattern: {
+                        value: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/,
+                        message:
+                          "La contraseña debe tener entre 8 y 16 caracteres, al menos un dígito, una minúscula y una mayúscula",
+                      },
+                    })}
+                    focusBordercolor="primary.300"
+                  />
+                </InputGroup>
                 <FormHelperText color="#23375B" align="start">
-                  La contraseña debe tener entre 8 y 16 caracteres, al menos un dígito, una
-                  minúscula y una mayúscula
+                  La contraseña debe tener entre 8 y 16 caracteres, al menos un
+                  dígito, una minúscula y una mayúscula
                 </FormHelperText>
-                <FormErrorMessage>{errors.password && errors.password?.message}</FormErrorMessage>
+                <FormErrorMessage>
+                  {errors.password && errors.password?.message}
+                </FormErrorMessage>
               </FormControl>
               <FormControl isRequired isInvalid={errors.confirm_password}>
                 <FormLabel color="#23375B" htmlFor="confirm_password">
                   Confirma tu contraseña
                 </FormLabel>
+                <InputGroup>
+                  <InputRightElement>
+                    <IconButton
+                      onClick={() => setIsHidden(!isHidden)}
+                      color="#23375B"
+                      icon={isHidden ? <HiEyeOff /> : <HiEye />}
+                    >
+                      {isHidden ? "Mostrar contraseñas" : "Ocultar contraseñas"}
+                    </IconButton>
+                  </InputRightElement>
                 <Input
                   bg="gray.100"
                   id="password"
-                  type="password"
+                  type={isHidden ? "password" : "text"}
                   {...register("confirm_password", {
                     required: "Este campo es requerido",
                     validate: (val) => {
@@ -361,13 +395,14 @@ const Register = () => {
                   })}
                   focusBordercolor="primary.300"
                 />
+                </InputGroup>
                 <FormHelperText color="#23375B" align="start">
                   Confirmar contraseña
                 </FormHelperText>
                 <FormErrorMessage>
                   {errors.confirm_password && errors.confirm_password?.message}
                 </FormErrorMessage>
-              </FormControl> */}
+              </FormControl>
               {/* <RegisterPasswordField /> */}
             </Stack>
             <Stack spacing="2">
@@ -377,7 +412,8 @@ const Register = () => {
                 variant="solid"
                 isLoading={isSubmitting}
                 loadingText="Creando cuenta..."
-                bgColor="#23375B" color="white"
+                bgColor="#23375B"
+                color="white"
               >
                 Crear cuenta
               </Button>

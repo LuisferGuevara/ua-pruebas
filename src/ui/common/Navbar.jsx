@@ -14,7 +14,7 @@ import {
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { FiUser, FiMenu, FiSearch, FiShoppingCart } from "react-icons/fi";
-import logo from "../../assets/mario.png";
+import logo from "../../assets/logotipo-horizontal-blanco.png";
 import { NavLink } from "react-router-dom";
 
 export const Navbar = () => {
