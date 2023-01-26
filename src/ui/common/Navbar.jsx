@@ -9,11 +9,8 @@ import {
   useBreakpointValue,
   Image,
   Input,
-<<<<<<< HEAD
   Collapse,
-=======
-  // Divider,
->>>>>>> 63f44a9ee57f3a0f51a167f72395103b55371cd9
+  Divider,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { FiUser, FiMenu, FiSearch, FiShoppingCart } from "react-icons/fi";
