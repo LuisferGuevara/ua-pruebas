@@ -16,7 +16,7 @@
   import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa'
   import logo from '../../../assets/logoUA.jpg'
  /*  import { Logo } from './Logo' */
- /* import { links } from './_data'
+/* import { links } from './_data'
   
   export const Footer = () => (
       <Box>
@@ -134,101 +134,113 @@
       </Box>
 
   ) */
-  
-  import {
-    Box,
-    Button,
-    // ButtonGroup,
-    // Container,
-    Divider,
-    Flex,
-    // IconButton,
-    Img,
-    SimpleGrid,
-    Stack,
-    Text,
-  } from '@chakra-ui/react'
-  import * as React from 'react'
-  // import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa'
-  import { links } from './_data'
-  import logo from '../../../assets/logotipo-horizontal-blanco.png'
-  
-  export const Footer = () => (
-    <Box as='section' bg="accent" color="on-acccent" w='100%' m="0 auto" bgColor='#121212'>
-      <Divider borderColor="bg-accent-subtle"/>
-      <Flex as="footer" role="contentinfo" flexDir="column" maxW="1440px" w="85%" m="0 auto">
+
+import {
+  Box,
+  Button,
+  // ButtonGroup,
+  // Container,
+  Divider,
+  Flex,
+  // IconButton,
+  Img,
+  SimpleGrid,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
+import * as React from "react";
+// import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa'
+import { links } from "./_data";
+import logo from "../../../assets/mario.png";
+
+export const Footer = () => (
+  <Box as="section" bg="accent" color="on-acccent" w="100%" m="0 auto" bgColor="#121212">
+    <Divider borderColor="bg-accent-subtle" />
+    <Flex as="footer" role="contentinfo" flexDir="column" maxW="1440px" w="85%" m="0 auto">
+      <Stack
+        justify="space-around"
+        align="start"
+        direction={{
+          base: "column",
+          lg: "row",
+        }}
+        py={{
+          base: "12",
+          md: "14",
+        }}
+        spacing="8"
+      >
         <Stack
-          justify="space-around"
-          align="start"
-          direction={{
-            base: 'column',
-            lg: 'row',
-          }}
-          py={{
-            base: '12',
-            md: '14',
-          }}
-          spacing="8"
-        >
-          <Stack
-            spacing={{
-              base: '6',
-              md: '8',
-            }}
-            align="center"
-            maxW='600px'
-          >
-            <Img src={logo} w='60%' opacity='100%'/>
-            <Text color="white" fontSize={'xl'} fontWeight='bold'>Academia online para mejorar tu futuro profesional como policía nacional, tu inglés y ¡mucho más!</Text>
-          </Stack>
-          <SimpleGrid
-            columns={{
-              base: 2,
-              md: 3, //He cambiado a 3 columnas. La 4ª estaba reflejada para app
-            }}
-            gap="8"
-            width={{
-              base: 'full',
-              lg: 'auto',
-            }}
-          >
-            {links.map((group, idx) => (
-              <Stack
-                key={idx}
-                spacing="8"
-                minW={{
-                  lg: '40',
-                }}
-              >
-                <Text fontSize="xl" fontWeight="semibold" color="#F5F5F">
-                  {group.title}
-                </Text>
-                <Stack spacing="2" shouldWrapChildren>
-                                  {group.links.map((link, idx) => (
-                    <Button fontSize='large' color="#FFFAF0" key={idx} as="a"  target="" variant="link-on-accent" href={link.href} _hover={{}}>
-                      {link.label}
-                    </Button> 
-                  ))}
-                </Stack>
-              </Stack>
-            ))}
-          </SimpleGrid>
-        </Stack>
-        <Divider borderColor="bg-accent-subtle" />
-        <Stack
-          pt="8"
-          pb="12"
-          justify="space-between"
-          direction={{
-            base: 'column-reverse',
-            md: 'row',
+          spacing={{
+            base: "6",
+            md: "8",
           }}
           align="center"
+          maxW="600px"
         >
-          <Text fontSize="sm" color="white">
-            &copy; {new Date().getFullYear()} Rocket418, Inc. Todos los derechos reservados.
+          <Img src={logo} w="60%" opacity="100%" />
+          <Text color="white" fontSize={"xl"} fontWeight="bold">
+            Academia online para mejorar tu futuro profesional como policía nacional, tu inglés y
+            ¡mucho más!
           </Text>
-         {/*  <ButtonGroup variant="ghost-on-accent">
+        </Stack>
+        <SimpleGrid
+          columns={{
+            base: 2,
+            md: 3, //He cambiado a 3 columnas. La 4ª estaba reflejada para app
+          }}
+          gap="8"
+          width={{
+            base: "full",
+            lg: "auto",
+          }}
+        >
+          {links.map((group, idx) => (
+            <Stack
+              key={idx}
+              spacing="8"
+              minW={{
+                lg: "40",
+              }}
+            >
+              <Text fontSize="xl" fontWeight="semibold" color="#F5F5F">
+                {group.title}
+              </Text>
+              <Stack spacing="2" shouldWrapChildren>
+                {group.links.map((link, idx) => (
+                  <Button
+                    fontSize="large"
+                    color="#FFFAF0"
+                    key={idx}
+                    as="a"
+                    target=""
+                    variant="link-on-accent"
+                    href={link.href}
+                    _hover={{}}
+                  >
+                    {link.label}
+                  </Button>
+                ))}
+              </Stack>
+            </Stack>
+          ))}
+        </SimpleGrid>
+      </Stack>
+      <Divider borderColor="bg-accent-subtle" />
+      <Stack
+        pt="8"
+        pb="12"
+        justify="space-between"
+        direction={{
+          base: "column-reverse",
+          md: "row",
+        }}
+        align="center"
+      >
+        <Text fontSize="sm" color="white">
+          &copy; {new Date().getFullYear()} Rocket418, Inc. Todos los derechos reservados.
+        </Text>
+        {/*  <ButtonGroup variant="ghost-on-accent">
             <IconButton
               as="a"
               href="#"
@@ -243,8 +255,7 @@
               icon={<FaTwitter fontSize="1.25rem" />}
             />
           </ButtonGroup> */}
-        </Stack>
-      </Flex>
-    </Box>
-  )
-  
+      </Stack>
+    </Flex>
+  </Box>
+);
