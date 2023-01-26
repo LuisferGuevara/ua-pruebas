@@ -9,12 +9,17 @@ import {
   Stack,
   Text,
   useBreakpointValue,
+  InputGroup,
+  InputRightElement,
+  IconButton,
 } from "@chakra-ui/react";
 import * as React from "react";
 import { NavLink } from "react-router-dom";
-import { PasswordField } from "./PasswordField";
+import { HiEye, HiEyeOff } from 'react-icons/hi';
+import { useState } from "react";
 
 export const SignInForm = (props) => {
+  const [isHidden, setIsHidden] = useState();
   return (
     <Stack spacing="8" {...props} minH="697px" borderRadius="0 28px  28px 0"  >
       <Stack spacing="6">
@@ -40,16 +45,27 @@ export const SignInForm = (props) => {
       <Stack spacing="2">
         <Stack spacing="16" mt="40px">
           <FormControl>
-            <FormLabel htmlFor="email" color="#23375B">
+            <FormLabel htmlFor="email" color="#23375B" >
               Email
             </FormLabel>
-            <Input id="email" placeholder="Introduce tu email" type="email" color="#23375B" />
+            <Input id="email" placeholder="Introduce tu email" type="email" color="#23375B" border="1px solid #23375B"  borderRadius="8px"/>
           </FormControl>
-          {/* <FormControl>
-            <FormLabel htmlFor="password">Contraseña</FormLabel>
+          <FormControl>
+            <FormLabel htmlFor="password" color="#23375B">Contraseña</FormLabel>
+            <InputGroup border="1px solid #23375B"  borderRadius="8px">
+            <InputRightElement>
+                    <IconButton
+                      onClick={() => setIsHidden(!isHidden)}
+                      color="#23375B"
+                      bg="transparent"
+                      icon={isHidden ? <HiEyeOff /> : <HiEye />}
+                    >
+                      {isHidden ? "Mostrar contraseñas" : "Ocultar contraseñas"}
+                    </IconButton>
+                  </InputRightElement>
             <Input id="password" placeholder="********" type="password" />
-          </FormControl> */}
-          <PasswordField />
+            </InputGroup>
+          </FormControl>
         </Stack>
         <HStack color="#23375B" pt="40px">
           <Checkbox defaultChecked>Recuérdame</Checkbox>

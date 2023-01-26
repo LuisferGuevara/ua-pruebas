@@ -33,7 +33,9 @@ export const Navbar = () => {
       <Box as="nav">
         <Flex justify="space-between" py="30px">
           <HStack>
+          <NavLink to="/">
             <Image src={logo} alt="Dan Abramov" w="200px" />
+          </NavLink>
           </HStack>
           <HStack>
             {isDesktop && (
@@ -145,7 +147,7 @@ export const Navbar = () => {
               {/* <Avatar boxSize="10" name="Christoph Winston" src="/* token.user.photo *" /> */}
             </HStack>
           ) : (
-            <Box display="flex" position="relative" zIndex="99">
+            <Box display="flex" position="relative" zIndex="99" bg="tomato">
               <Collapse
                 in={isOpen}
                 style={{ position: "absolute", top: "0px", right: "50px"}}
@@ -153,16 +155,19 @@ export const Navbar = () => {
                 <Box
                   display="flex"
                   alignItems="center"
-                  
                   flexDirection="column"
                   bg="whitesmoke"
                   borderRadius="10px"
-                  w="300px"
+                  w="200px"
+                  h="350px"
+                  border="1px solid #23375B"
                 >
                   <Flex>
                     <Input
                       value={searchTerm}
                       textAlign="center"
+                      m="10px"
+                      border="1px solid #23375B"
                       // onChange={(e) => setSearchTerm(e.target.value)}
                       placeholder="Buscar"
                       // display={showInput ? "block" : "none"}
