@@ -44,6 +44,7 @@ export const Navbar = () => {
   }
 
   return (
+
     <Box
       as="section"
       w="85%"
@@ -52,6 +53,7 @@ export const Navbar = () => {
       color="#23375B"
       maxWidth="1440px"
     >
+
       <Box as="nav">
         <Flex justify="space-between" py="30px">
           <Flex>
@@ -69,6 +71,7 @@ export const Navbar = () => {
             {isDesktop && (
               <ButtonGroup className="button--group">
                 <Button as={NavLink} to="/" className="button">
+
                   Inicio
                 </Button>
                 <Button as={NavLink} to="/courses" className="button">

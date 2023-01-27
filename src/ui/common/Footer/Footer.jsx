@@ -9,16 +9,17 @@ import {
   SimpleGrid,
   Stack,
   Text,
+  Route,
   Heading,
 } from "@chakra-ui/react";
 import * as React from "react";
 import { FaInstagram } from "react-icons/fa";
 import { links } from "./_data";
 import logo from "../../../assets/mario.png";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+
 export const Footer = () => (
   <Box as="section" w="100%" m="0 auto" bgColor="#121212">
-    <Divider borderColor="bg-accent-subtle" />
     <Flex
       as="footer"
       role="contentinfo"
@@ -26,12 +27,11 @@ export const Footer = () => (
       maxW="1440px"
       w="85%"
       m="0 auto"
-      bg="salmon"
+      // bg="salmon"
     >
       <Stack
         justify="space-around"
         align={{ base: "center" }}
-        bg="red"
         direction={{
           base: "column",
           lg: "row",
@@ -42,21 +42,21 @@ export const Footer = () => (
         }}
         spacing="8"
         borderBottom="1px solid whitesmoke"
+        // bg="red"
       >
         <Stack
-          bg="green"
+          align="center"
           spacing={{
             base: "6",
             md: "8",
           }}
-          align="center"
           width={{
             base: "100%",
             lg: "50%",
           }}
-          color="whitesmoke"
           fontSize="large"
-          h={{ base: "auto" }}
+          h={{ base: "auto", md: "280px" }}
+          color="whitesmoke"
         >
           <Flex
             width={{
@@ -64,45 +64,53 @@ export const Footer = () => (
               lg: "80%",
             }}
           >
-            <Img src={logo} w="100%" opacity="100%" bg="salmon" objectFit="contain" />
+            <Img src={logo} w="100%" objectFit="contain" opacity="100%" />
           </Flex>
 
-          <Heading fontSize={"xl"} fontWeight="bold">
-            Academia online para mejorar tu futuro profesional como policía nacional, tu inglés y
-            ¡mucho más!
+          <Heading fontSize={"xl"} fontWeight="medium">
+            Academia online para mejorar tu futuro profesional como policía
+            nacional, tu inglés y ¡mucho más!
           </Heading>
-          {/* NECESITAMOS APLICAR EL MAILTO: */}
-          <Link href={`mailto:info@uniformeazul.com`}>info@uniformeazul.com</Link>
+          <Link href="/contact">info@uniformeazul.com</Link>
         </Stack>
         <SimpleGrid
-          bg="tan"
           columns={{
             base: 2,
             md: 3,
           }}
-          gap="6"
+          gap="0"
           display="flex"
-justifyContent={"center"}
+          justifyContent={"center"}
           width={{
             base: "full",
-            lg: "",
           }}
+          h="280px"
         >
           {links.map((group, idx) => (
             <Stack
-              bg="teal"
+              // bg="teal"
 
               key={idx}
               spacing="8"
               w="100%"
+              mt="10px"
+              // fontSize=""
             >
-              <Text fontSize="xl" color="whitesmoke" fontWeight="semibold">
+              <Heading
+                fontSize={{ base: "lg", md: "large" }}
+                fontWeight="bold"
+                color="whitesmoke"
+              >
                 {group.title}
-              </Text>
-              <Stack spacing="2" shouldWrapChildren display={"flex"} align="start">
+              </Heading>
+              <Stack
+                display={"flex"}
+                align={"center"}
+                spacing="2"
+                shouldWrapChildren
+              >
                 {group.links.map((link, idx) => {
-                  const target = idx >= group.links.length - 2 ? "_blank" : "_self";
-                  return (
+                  return group.title === "ENLACES" ? (
                     <Button
                       fontSize="large"
                       color="#FFFAF0"
@@ -110,10 +118,14 @@ justifyContent={"center"}
                       as="a"
                       variant="link-on-accent"
                       href={link.href}
-                      target={target}
+                      target="_blank"
                     >
                       {link.label}
                     </Button>
+                  ) : (
+                    <NavLink to={link.href} key={idx}>
+                      {link.label}
+                    </NavLink>
                   );
                 })}
               </Stack>
@@ -121,26 +133,33 @@ justifyContent={"center"}
           ))}
         </SimpleGrid>
       </Stack>
-      <Divider borderColor="bg-accent-subtle" />
       <Stack
         pt="8"
         pb="12"
         justify="space-between"
         direction={{
-          base: "column-reverse",
+          base: "row",
           md: "row",
         }}
         align="center"
+        textColor="gray"
       >
-        <Text fontSize="sm" color="white">
-          &copy; {new Date().getFullYear()} Rocket418, Inc. Todos los derechos reservados.
-        </Text>
+        <Heading
+          fontSize="sm"
+          textColor={"gray"}
+          fontWeight="medium"
+          textAlign="start"
+        >
+          &copy; {new Date().getFullYear()} Rocket418, Inc. Todos los derechos
+          reservados.
+        </Heading>
         <ButtonGroup variant="ghost-on-accent">
           <IconButton
             as="a"
-            href="#"
+            href="https://www.instagram.com/uniformeazul/"
+            target={"_blank"}
             aria-label="Instagram"
-            icon={<FaInstagram fontSize="1.25rem" />}
+            icon={<FaInstagram fontSize="1.6rem" />}
           />
         </ButtonGroup>
       </Stack>

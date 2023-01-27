@@ -47,12 +47,12 @@ export const links = [
         {
           label: 'B.O.E.',
           href: 'https://www.boe.es/',
-          target: "_blank"
+
         },
         {
           label: 'POLICIA.es',
           href: 'https://www.policia.es/_es/index.php',
-          target: "_blank"
+
         },
       ],
     },
