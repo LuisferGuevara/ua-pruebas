@@ -41,12 +41,12 @@ export const Footer = () => (
           md: "14",
         }}
         spacing="8"
-        borderBottom="1px solid whitesmoke" 
+        borderBottom="1px solid whitesmoke"
         // bg="red"
       >
         <Stack
-           align="center"
-           spacing={{
+          align="center"
+          spacing={{
             base: "6",
             md: "8",
           }}
@@ -64,12 +64,12 @@ export const Footer = () => (
               lg: "80%",
             }}
           >
-            <Img src={logo} w="100%" objectFit="contain" opacity="100%"/>
+            <Img src={logo} w="100%" objectFit="contain" opacity="100%" />
           </Flex>
 
           <Heading fontSize={"xl"} fontWeight="medium">
-            Academia online para mejorar tu futuro profesional como policía nacional, tu inglés y
-            ¡mucho más!
+            Academia online para mejorar tu futuro profesional como policía
+            nacional, tu inglés y ¡mucho más!
           </Heading>
           <Link href="/contact">info@uniformeazul.com</Link>
         </Stack>
@@ -94,69 +94,40 @@ export const Footer = () => (
               spacing="8"
               w="100%"
               mt="10px"
-            // fontSize=""
+              // fontSize=""
             >
-              <Heading fontSize={
-                {base:"lg",
-                md:"large"}
-              } fontWeight="bold" color="whitesmoke">
+              <Heading
+                fontSize={{ base: "lg", md: "large" }}
+                fontWeight="bold"
+                color="whitesmoke"
+              >
                 {group.title}
               </Heading>
-              <Stack display={"flex"} 
-              align={"center"} spacing="2" shouldWrapChildren >
-                {group.links.map((link, idx) => 
-//                   const lastGroup = links[2].links[0].label;
-//                   const lastGroup1 = links[2].links[1].label;
-
-//                   console.log("ou ultimo",lastGroup, lastGroup1)
-// idx === lastGroup || idx === lastGroup1 ? (
-              idx === links.length - 1 ?                   
-
-
-<Button
-                      fontSize={{
-                        base:"small",
-                        md:"large",
-
-                      }}
+              <Stack
+                display={"flex"}
+                align={"center"}
+                spacing="2"
+                shouldWrapChildren
+              >
+                {group.links.map((link, idx) => {
+                  return group.title === "ENLACES" ? (
+                    <Button
+                      fontSize="large"
                       color="#FFFAF0"
                       key={idx}
-                      as="Rou"
-                      variant="link-on-accent"
-                      href={link.href}
-                      target="_blank"
-                      fontWeight="normal"
-                      bg="transparent"
-                      borderRadius="0px"
-                      _hover={{
-                        borderBottom: "1px solid whitesmoke",
-                      }}
-                    >
-                      {link.label}
-                    </Button> :
-
-                     <Link
-                      fontSize={{
-                        base:"small",
-                        md:"large",
-
-                      }}
-                      color="#FFFAF0"
-                      key={link.label}
                       as="a"
                       variant="link-on-accent"
                       href={link.href}
-                      // target="_self"
-                      fontWeight="normal"
-                      bg="transparent"
-                      borderRadius="0px"
-                      _hover={{
-                        borderBottom: "1px solid whitesmoke",
-                      }}
+                      target="_blank"
                     >
                       {link.label}
-                    </Link>)})
-           
+                    </Button>
+                  ) : (
+                    <NavLink to={link.href} key={idx}>
+                      {link.label}
+                    </NavLink>
+                  );
+                })}
               </Stack>
             </Stack>
           ))}
@@ -171,11 +142,16 @@ export const Footer = () => (
           md: "row",
         }}
         align="center"
-
         textColor="gray"
       >
-        <Heading fontSize="sm" textColor={"gray"} fontWeight="medium" textAlign="start">
-          &copy; {new Date().getFullYear()} Rocket418, Inc. Todos los derechos reservados.
+        <Heading
+          fontSize="sm"
+          textColor={"gray"}
+          fontWeight="medium"
+          textAlign="start"
+        >
+          &copy; {new Date().getFullYear()} Rocket418, Inc. Todos los derechos
+          reservados.
         </Heading>
         <ButtonGroup variant="ghost-on-accent">
           <IconButton
