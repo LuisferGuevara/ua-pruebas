@@ -1,10 +1,67 @@
+.navbar {
+  width: 85%;
+  height: 140px;
+  margin: 0 auto;
+  color: #23375b;
+  max-width: 1440px;
+  // position: fixed !important;
+  z-index: 100;
+  top: 0;
+}
+
+.navbar.scrolled {
+  background-color: whitesmoke;
+  border-radius: 0 0 25px 25px;
+  transition: background-color 0.5s ease-in-out;
+
+  .navigation--navbar {
+    .button--group {
+      background-color: #23375b;
+      color: whitesmoke;
+      .button {
+        &:hover {
+          background-color: whitesmoke;
+          color: #23375b;
+        }
+      }
+      .active {
+        background-color: whitesmoke;
+        color: #23375b;
+      }
+    }
+  }
+  .navigation--icons {
+    .icon {
+      color: #23375b;
+
+      &:hover {
+        color: whitesmoke;
+        background-color: #23375bdf;
+      }
+    }
+
+    .input {
+      color: #23375b;
+      border: solid 1px;
+    }
+    .input::placeholder {
+      color: gray;
+    }
+
+    .active {
+      color: whitesmoke;
+      background-color: #23375bdf;
+    }
+  }
+}
+
 .navigation--navbar {
   .button--group {
     letter-spacing: 2;
     padding: 8px;
     border-radius: 50px;
     background-color: whitesmoke;
-    margin: 0 10px;
+    // margin: 0 10px;
     .button {
       background-color: transparent;
       border-radius: 50px;
@@ -34,11 +91,12 @@
   .input {
     margin-top: 5px;
     position: absolute;
-    top: 105px;
-    right: 90px;
+    top: 90px;
+    right: 8%;
     width: 300px;
     color: whitesmoke;
     text-align: center;
+    border-radius: 100px;
   }
 
   .active {
@@ -87,9 +145,10 @@
     position: absolute;
     top: 45px;
     right: 0;
-    width: 300px;
+    width: 250px;
     color: whitesmoke;
     text-align: center;
     margin-right: 5px;
+    border-radius: 100px;
   }
 }
