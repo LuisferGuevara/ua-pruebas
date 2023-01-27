@@ -35,7 +35,7 @@ export const Navbar = () => {
   }
 
   return (
-    <Box as="section" w="85%" m="0 auto" color="#23375B" maxWidth="1440px">
+    <Box as="section" w="85%" m="0 auto" maxWidth="1440px" color="#23375B">
       <Box as="nav">
         <Flex justify="space-between" py="30px">
           <Flex>
@@ -52,12 +52,10 @@ export const Navbar = () => {
                   _focus={{ outline: "none" }}
                   bg="transparent"
                   borderRadius="50px"
-                  // _hover={{bg: "none"}}
                   _hover={{
+                    borderRadius: "50px",
                     bg: "#23375B",
                     color: "white",
-                    borderRadius: "50px",
-                    // transform: "scale(1.05)"
                   }}
                 >
                   Inicio
@@ -161,55 +159,62 @@ export const Navbar = () => {
 
                 <IconButton
                   as={NavLink}
-                  _hover={{
-                    bg: "whitesmoke",
-                    color: "#23375B",
-                  }}
+
                   // to="/myaccount"  --> Cuando podamos privatizar la ruta con el token
                   to="/login"
                   icon={<FiUser fontSize="1.25rem" />}
                   aria-label="MyAccount"
                   borderRadius="50px"
+                  _hover={{
+                    bg: "whitesmoke",
+                    color: "#23375B",
+                  }}
                 />
               </ButtonGroup>
               <Input
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    placeholder="Buscar..."
-                    display={showInput ? "block" : "none"}
-                    onKeyPress={(e) => {
-                      if (e.key === "Enter") {
-                        handleSearch();
-                      }
-                    }}
-                  />
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                onKeyPress={(e) => {
+                  if (e.key === "Enter") {
+                    handleSearch();
+                  }
+                }}
+                placeholder="Buscar..."
+                display={showInput ? "block" : "none"}
+                position="absolute"
+                top="95px"
+                right={"90px"}
+                width="300px"
+              />
               {/* <Avatar boxSize="10" name="Christoph Winston" src="/* token.user.photo *" /> */}
             </HStack>
           ) : (
             <Box display="flex" position="relative" zIndex="99">
-              <Collapse
-              in={isOpen}
-                style={{ position: "absolute", top: "90px", right: "0" }}
-                >
+              <Collapse in={isOpen} style={{ position: "absolute", top: "90px", right: "0" }}>
                 <Box
-                // in={isOpen ? "block" : "none"}
-                  display="flex"
-                  color="#23375B"
+                  // in={isOpen ? "block" : "none"}
+                  display="flex"                 
                   alignItems="center"
                   flexDirection="column"
-                  bg="whitesmoke"
-                  borderRadius="10px"
                   pt="5%"
                   // w="220px"
                   // minW="365px"
                   width="85vw"
                   // h="450px"
                   h="58vh"
+                  bg="whitesmoke"
+                  borderRadius="10px"
                   border="1px solid #23375B"
+                  color="#23375B"
                 >
                   <Flex>
                     <Input
                       value={searchTerm}
+                       onKeyPress={(e) => {
+                        if (e.key === "Enter") {
+                          handleSearch();
+                        }
+                      }}
                       textAlign="center"
                       m="10px"
                       w="200%"
@@ -218,11 +223,7 @@ export const Navbar = () => {
                       placeholder="Buscar"
                       color="black"
                       // display={showInput ? "block" : "none"}
-                      onKeyPress={(e) => {
-                        if (e.key === "Enter") {
-                          handleSearch();
-                        }
-                      }}
+                     
                     />
                     {/* <IconButton
                     onClick={() => setShowInput(!showInput)}
@@ -258,12 +259,12 @@ export const Navbar = () => {
                     borderRadius="50px"
                     m="10px 0"
                     transition="All 0.0s linear"
-                    _hover={{
-                      bg: "#23375B",
-                      color: "white",
+                    _hover={{                     
                       p: "6px",
                       w: "90%",
                       borderRadius: "4px",
+                      bg: "#23375B",
+                      color: "white",
                       // transform: "scale(1.05)"
                     }}
                   >
@@ -278,11 +279,11 @@ export const Navbar = () => {
                     m="10px 0"
                     transition="All 0.0s linear"
                     _hover={{
-                      bg: "#23375B",
-                      color: "white",
                       p: "6px",
                       w: "90%",
                       borderRadius: "4px",
+                      bg: "#23375B",
+                      color: "white",                     
                       // transform: "scale(1.05)"
                     }}
                   >
@@ -291,17 +292,17 @@ export const Navbar = () => {
                   <Button
                     onClick={() => setIsOpen(false)}
                     as={NavLink}
-                    to="/shop"
-                    bg="transparent"
+                    to="/shop"                    
                     borderRadius="50px"
                     m="10px 0"
                     transition="All 0.0s linear"
+                    bg="transparent"
                     _hover={{
-                      bg: "#23375B",
-                      color: "white",
                       p: "6px",
                       w: "90%",
                       borderRadius: "4px",
+                      bg: "#23375B",
+                      color: "white",
                       // transform: "scale(1.05)"
                     }}
                   >
@@ -311,16 +312,16 @@ export const Navbar = () => {
                     onClick={() => setIsOpen(false)}
                     as={NavLink}
                     to="/contact"
-                    bg="transparent"
-                    borderRadius="50px"
                     m="10px 0"
                     transition="All 0.0s linear"
+                    borderRadius="50px"
+                    bg="transparent"
                     _hover={{
-                      bg: "#23375B",
-                      color: "white",
                       p: "6px",
                       w: "90%",
                       borderRadius: "4px",
+                      bg: "#23375B",
+                      color: "white",
                       // transform: "scale(1.05)"
                     }}
                   >
@@ -329,17 +330,17 @@ export const Navbar = () => {
                   <Button
                     onClick={() => setIsOpen(false)}
                     as={NavLink}
-                    to="/cart"
-                    bg="transparent"
-                    borderRadius="50px"
+                    to="/cart"                  
                     m="10px 0"
                     transition="All 0.0s linear"
+                    borderRadius="50px"
+                    bg="transparent"
                     _hover={{
-                      bg: "#23375B",
-                      color: "white",
                       p: "6px",
                       w: "90%",
                       borderRadius: "4px",
+                      bg: "#23375B",
+                      color: "white",
                       // transform: "scale(1.05)"
                     }}
                   >
@@ -349,9 +350,9 @@ export const Navbar = () => {
                     onClick={() => setIsOpen(false)}
                     as={NavLink}
                     to="/login"
+                    m="10px 0"
                     bg="transparent"
                     borderRadius="50px"
-                    m="10px 0"
                     transition="All 0.0s linear"
                     _hover={{
                       bg: "#23375B",

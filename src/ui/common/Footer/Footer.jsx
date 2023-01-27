@@ -9,16 +9,17 @@ import {
   SimpleGrid,
   Stack,
   Text,
+  Route,
   Heading,
 } from "@chakra-ui/react";
 import * as React from "react";
 import { FaInstagram } from "react-icons/fa";
 import { links } from "./_data";
 import logo from "../../../assets/mario.png";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+
 export const Footer = () => (
   <Box as="section" w="100%" m="0 auto" bgColor="#121212">
-    <Divider borderColor="bg-accent-subtle" />
     <Flex
       as="footer"
       role="contentinfo"
@@ -26,12 +27,11 @@ export const Footer = () => (
       maxW="1440px"
       w="85%"
       m="0 auto"
-      bg="salmon"
+      // bg="salmon"
     >
       <Stack
         justify="space-around"
         align={{ base: "center" }}
-        bg="red"
         direction={{
           base: "column",
           lg: "row",
@@ -41,22 +41,22 @@ export const Footer = () => (
           md: "14",
         }}
         spacing="8"
-        borderBottom="1px solid whitesmoke"
+        borderBottom="1px solid whitesmoke" 
+        // bg="red"
       >
         <Stack
-          bg="green"
-          spacing={{
+           align="center"
+           spacing={{
             base: "6",
             md: "8",
           }}
-          align="center"
           width={{
             base: "100%",
             lg: "50%",
           }}
-          color="whitesmoke"
           fontSize="large"
-          h={{ base: "auto" }}
+          h={{ base: "auto", md: "280px" }}
+          color="whitesmoke"
         >
           <Flex
             width={{
@@ -64,83 +64,126 @@ export const Footer = () => (
               lg: "80%",
             }}
           >
-            <Img src={logo} w="100%" opacity="100%" bg="salmon" objectFit="contain" />
+            <Img src={logo} w="100%" objectFit="contain" opacity="100%"/>
           </Flex>
 
-          <Heading fontSize={"xl"} fontWeight="bold">
+          <Heading fontSize={"xl"} fontWeight="medium">
             Academia online para mejorar tu futuro profesional como policía nacional, tu inglés y
             ¡mucho más!
           </Heading>
-          {/* NECESITAMOS APLICAR EL MAILTO: */}
-          <Link href={`mailto:info@uniformeazul.com`}>info@uniformeazul.com</Link>
+          <Link href="/contact">info@uniformeazul.com</Link>
         </Stack>
         <SimpleGrid
-          bg="tan"
           columns={{
             base: 2,
             md: 3,
           }}
-          gap="6"
+          gap="0"
           display="flex"
-justifyContent={"center"}
+          justifyContent={"center"}
           width={{
             base: "full",
-            lg: "",
           }}
+          h="280px"
         >
           {links.map((group, idx) => (
             <Stack
-              bg="teal"
+              // bg="teal"
 
               key={idx}
               spacing="8"
               w="100%"
+              mt="10px"
+            // fontSize=""
             >
-              <Text fontSize="xl" color="whitesmoke" fontWeight="semibold">
+              <Heading fontSize={
+                {base:"lg",
+                md:"large"}
+              } fontWeight="bold" color="whitesmoke">
                 {group.title}
-              </Text>
-              <Stack spacing="2" shouldWrapChildren display={"flex"} align="start">
-                {group.links.map((link, idx) => {
-                  const target = idx >= group.links.length - 2 ? "_blank" : "_self";
-                  return (
-                    <Button
-                      fontSize="large"
+              </Heading>
+              <Stack display={"flex"} 
+              align={"center"} spacing="2" shouldWrapChildren >
+                {group.links.map((link, idx) => 
+//                   const lastGroup = links[2].links[0].label;
+//                   const lastGroup1 = links[2].links[1].label;
+
+//                   console.log("ou ultimo",lastGroup, lastGroup1)
+// idx === lastGroup || idx === lastGroup1 ? (
+              idx === links.length - 1 ?                   
+
+
+<Button
+                      fontSize={{
+                        base:"small",
+                        md:"large",
+
+                      }}
                       color="#FFFAF0"
                       key={idx}
+                      as="Rou"
+                      variant="link-on-accent"
+                      href={link.href}
+                      target="_blank"
+                      fontWeight="normal"
+                      bg="transparent"
+                      borderRadius="0px"
+                      _hover={{
+                        borderBottom: "1px solid whitesmoke",
+                      }}
+                    >
+                      {link.label}
+                    </Button> :
+
+                     <Link
+                      fontSize={{
+                        base:"small",
+                        md:"large",
+
+                      }}
+                      color="#FFFAF0"
+                      key={link.label}
                       as="a"
                       variant="link-on-accent"
                       href={link.href}
-                      target={target}
+                      // target="_self"
+                      fontWeight="normal"
+                      bg="transparent"
+                      borderRadius="0px"
+                      _hover={{
+                        borderBottom: "1px solid whitesmoke",
+                      }}
                     >
                       {link.label}
-                    </Button>
-                  );
-                })}
+                    </Link>)})
+           
               </Stack>
             </Stack>
           ))}
         </SimpleGrid>
       </Stack>
-      <Divider borderColor="bg-accent-subtle" />
       <Stack
         pt="8"
         pb="12"
         justify="space-between"
         direction={{
-          base: "column-reverse",
+          base: "row",
           md: "row",
         }}
         align="center"
+
+        textColor="gray"
       >
-        <Text fontSize="sm" color="white">
+        <Heading fontSize="sm" textColor={"gray"} fontWeight="medium" textAlign="start">
           &copy; {new Date().getFullYear()} Rocket418, Inc. Todos los derechos reservados.
-        </Text>
+        </Heading>
         <ButtonGroup variant="ghost-on-accent">
           <IconButton
             as="a"
-            href="#"
+            href="https://www.instagram.com/uniformeazul/"
+            target={"_blank"}
             aria-label="Instagram"
-            icon={<FaInstagram fontSize="1.25rem" />}
+            icon={<FaInstagram fontSize="1.6rem" />}
           />
         </ButtonGroup>
       </Stack>
