@@ -12,10 +12,11 @@ import {
   Collapse,
   Divider,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FiUser, FiMenu, FiSearch, FiShoppingCart } from "react-icons/fi";
-import logo from "../../assets/mario.png";
-import { /* Link, */ NavLink } from "react-router-dom";
+import logo from "../../../assets/mario.png";
+import { /* Link, */ NavLink, useLocation } from "react-router-dom";
+import "./Navbar.css";
 
 export const Navbar = () => {
   const isDesktop = useBreakpointValue({ base: false, lg: true });
@@ -23,6 +24,11 @@ export const Navbar = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [showInput, setShowInput] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  // const { pathname } = useLocation();
+
+  // useEffect(() => {
+  //   setIsOpen(false);
+  // }, [pathname]);
 
   function handleSearch() {
     // hacer la función mamahuevos
@@ -33,8 +39,8 @@ export const Navbar = () => {
       <Box as="nav">
         <Flex justify="space-between" py="30px">
           <Flex>
-            <NavLink to="/" >
-              <Image src={logo} alt="Dan Abramov" w="200px" objectFit="contain" h="100%"/>
+            <NavLink to="/">
+              <Image src={logo} alt="Dan Abramov" w="200px" objectFit="contain" h="100%" />
             </NavLink>
           </Flex>
           <HStack>
@@ -118,28 +124,28 @@ export const Navbar = () => {
           {isDesktop ? (
             <HStack spacing="4">
               <ButtonGroup color="white" variant="ghost" spacing="1">
-                <Flex>
-                  <Input
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    placeholder="mamahuevos"
-                    display={showInput ? "block" : "none"}
-                    onKeyPress={(e) => {
-                      if (e.key === "Enter") {
-                        handleSearch();
-                      }
-                    }}
-                  />
+                <Flex flexDirection="column">
                   <IconButton
                     onClick={() => setShowInput(!showInput)}
                     icon={<FiSearch fontSize="1.25rem" />}
                     aria-label="Search"
                     borderRadius="50px"
                     _hover={{
-                    bg: "whitesmoke",
-                    color: "#23375B",
-                  }}
+                      bg: "whitesmoke",
+                      color: "#23375B",
+                    }}
                   />
+                  {/* <Input
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    placeholder="Buscar..."
+                    display={showInput ? "block" : "none"}
+                    onKeyPress={(e) => {
+                      if (e.key === "Enter") {
+                        handleSearch();
+                      }
+                    }}
+                  /> */}
                 </Flex>
                 <IconButton
                   as={NavLink}
@@ -166,20 +172,39 @@ export const Navbar = () => {
                   borderRadius="50px"
                 />
               </ButtonGroup>
+              <Input
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    placeholder="Buscar..."
+                    display={showInput ? "block" : "none"}
+                    onKeyPress={(e) => {
+                      if (e.key === "Enter") {
+                        handleSearch();
+                      }
+                    }}
+                  />
               {/* <Avatar boxSize="10" name="Christoph Winston" src="/* token.user.photo *" /> */}
             </HStack>
           ) : (
             <Box display="flex" position="relative" zIndex="99">
-              <Collapse in={isOpen} style={{ position: "absolute", top: "50px", right: "0px" }}>
+              <Collapse
+              in={isOpen}
+                style={{ position: "absolute", top: "90px", right: "0" }}
+                >
                 <Box
+                // in={isOpen ? "block" : "none"}
                   display="flex"
                   color="#23375B"
                   alignItems="center"
                   flexDirection="column"
                   bg="whitesmoke"
                   borderRadius="10px"
-                  w="220px"
-                  h="450px"
+                  pt="5%"
+                  // w="220px"
+                  // minW="365px"
+                  width="85vw"
+                  // h="450px"
+                  h="58vh"
                   border="1px solid #23375B"
                 >
                   <Flex>
@@ -187,6 +212,7 @@ export const Navbar = () => {
                       value={searchTerm}
                       textAlign="center"
                       m="10px"
+                      w="200%"
                       border="1px solid #23375B"
                       onChange={(e) => setSearchTerm(e.target.value)}
                       placeholder="Buscar"
@@ -206,6 +232,7 @@ export const Navbar = () => {
                   /> */}
                   </Flex>
                   <Button
+                    onClick={() => setIsOpen(false)}
                     as={NavLink}
                     to="/"
                     bg="transparent"
@@ -224,6 +251,7 @@ export const Navbar = () => {
                     Inicio
                   </Button>
                   <Button
+                    onClick={() => setIsOpen(false)}
                     as={NavLink}
                     to="/courses"
                     bg="transparent"
@@ -242,6 +270,7 @@ export const Navbar = () => {
                     Cursos
                   </Button>
                   <Button
+                    onClick={() => setIsOpen(false)}
                     as={NavLink}
                     to="/freetests"
                     bg="transparent"
@@ -260,6 +289,7 @@ export const Navbar = () => {
                     Tests Gratis
                   </Button>
                   <Button
+                    onClick={() => setIsOpen(false)}
                     as={NavLink}
                     to="/shop"
                     bg="transparent"
@@ -278,6 +308,7 @@ export const Navbar = () => {
                     Tienda
                   </Button>
                   <Button
+                    onClick={() => setIsOpen(false)}
                     as={NavLink}
                     to="/contact"
                     bg="transparent"
@@ -296,6 +327,7 @@ export const Navbar = () => {
                     Contacto
                   </Button>
                   <Button
+                    onClick={() => setIsOpen(false)}
                     as={NavLink}
                     to="/cart"
                     bg="transparent"
@@ -314,6 +346,7 @@ export const Navbar = () => {
                     Carrito
                   </Button>
                   <Button
+                    onClick={() => setIsOpen(false)}
                     as={NavLink}
                     to="/login"
                     bg="transparent"
