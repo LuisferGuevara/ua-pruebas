@@ -54,7 +54,7 @@ export const Login = () => (
                   <Text
                     fontSize="lg"
                     maxW="md"
-                    bgColor="green"
+                  
                     fontWeight="bold"
                     color="white !important"
                     textShadow="1px 2px 0 black"

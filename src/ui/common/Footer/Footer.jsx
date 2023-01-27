@@ -94,9 +94,7 @@ justifyContent={"center"}
 
               key={idx}
               spacing="8"
-              minW={{
-                lg: "40",
-              }}
+              w="100%"
             >
               <Text fontSize="xl" color="whitesmoke" fontWeight="semibold">
                 {group.title}
