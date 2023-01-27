@@ -12,11 +12,11 @@ import {
   Collapse,
   Divider,
 } from "@chakra-ui/react";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FiUser, FiMenu, FiSearch, FiShoppingCart } from "react-icons/fi";
 import logo from "../../../assets/mario.png";
-import { /* Link, */ NavLink, useLocation } from "react-router-dom";
-import "./Navbar.css";
+import { NavLink } from "react-router-dom";
+import "./Navbar.scss";
 
 export const Navbar = () => {
   const isDesktop = useBreakpointValue({ base: false, lg: true });
@@ -24,116 +24,76 @@ export const Navbar = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [showInput, setShowInput] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  // const { pathname } = useLocation();
 
-  // useEffect(() => {
-  //   setIsOpen(false);
-  // }, [pathname]);
+  function handleClickOutside(event) {
+    if (menuRef.current && !menuRef.current.contains(event.target)) {
+      setIsOpen(false);
+    }
+  }
+  const menuRef = useRef(null);
+
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
 
   function handleSearch() {
     // hacer la función mamahuevos
   }
 
   return (
-    <Box as="section" w="85%" m="0 auto" color="#23375B" maxWidth="1440px">
+    <Box
+      as="section"
+      w="85%"
+      h="150px"
+      m="0 auto"
+      color="#23375B"
+      maxWidth="1440px"
+    >
       <Box as="nav">
         <Flex justify="space-between" py="30px">
           <Flex>
             <NavLink to="/">
-              <Image src={logo} alt="Dan Abramov" w="200px" objectFit="contain" h="100%" />
+              <Image
+                src={logo}
+                alt="Dan Abramov"
+                objectFit="contain"
+                w="180px"
+                h="100%"
+              />
             </NavLink>
           </Flex>
-          <HStack>
+          <HStack className="navigation--navbar">
             {isDesktop && (
-              <ButtonGroup spacing="2" p="8px" borderRadius="50px" bg="whitesmoke" m="0 10px">
-                <Button
-                  as={NavLink}
-                  to="/"
-                  _focus={{ outline: "none" }}
-                  bg="transparent"
-                  borderRadius="50px"
-                  // _hover={{bg: "none"}}
-                  _hover={{
-                    bg: "#23375B",
-                    color: "white",
-                    borderRadius: "50px",
-                    // transform: "scale(1.05)"
-                  }}
-                >
+              <ButtonGroup className="button--group">
+                <Button as={NavLink} to="/" className="button">
                   Inicio
                 </Button>
-                <Button
-                  as={NavLink}
-                  to="/courses"
-                  bg="transparent"
-                  borderRadius="50px"
-                  _hover={{
-                    bg: "#23375B",
-                    color: "white",
-                    borderRadius: "50px",
-                    // transform: "scale(1.05)"
-                  }}
-                >
+                <Button as={NavLink} to="/courses" className="button">
                   Cursos
                 </Button>
-                <Button
-                  as={NavLink}
-                  to="/freetests"
-                  bg="transparent"
-                  borderRadius="50px"
-                  _hover={{
-                    bg: "#23375B",
-                    color: "white",
-                    borderRadius: "50px",
-                    // transform: "scale(1.05)"
-                  }}
-                >
+                <Button as={NavLink} to="/freetests" className="button">
                   Tests Gratis
                 </Button>
-                <Button
-                  as={NavLink}
-                  to="/shop"
-                  bg="transparent"
-                  borderRadius="50px"
-                  _hover={{
-                    bg: "#23375B",
-                    color: "white",
-                    borderRadius: "50px",
-                    // transform: "scale(1.05)"
-                  }}
-                >
+                <Button as={NavLink} to="/shop" className="button">
                   Tienda
                 </Button>
-                <Button
-                  as={NavLink}
-                  to="/contact"
-                  bg="transparent"
-                  borderRadius="50px"
-                  _hover={{
-                    bg: "#23375B",
-                    color: "white",
-                    borderRadius: "50px",
-                    // transform: "scale(1.05)"
-                  }}
-                >
+                <Button as={NavLink} to="/contact" className="button">
                   Contacto
                 </Button>
               </ButtonGroup>
             )}
           </HStack>
           {isDesktop ? (
-            <HStack spacing="4">
+            <HStack spacing="4" className="navigation--icons">
               <ButtonGroup color="white" variant="ghost" spacing="1">
                 <Flex flexDirection="column">
                   <IconButton
                     onClick={() => setShowInput(!showInput)}
                     icon={<FiSearch fontSize="1.25rem" />}
-                    aria-label="Search"
-                    borderRadius="50px"
-                    _hover={{
-                      bg: "whitesmoke",
-                      color: "#23375B",
-                    }}
+                    className="icon"
                   />
                   {/* <Input
                     value={searchTerm}
@@ -151,102 +111,61 @@ export const Navbar = () => {
                   as={NavLink}
                   to="/cart"
                   icon={<FiShoppingCart fontSize="1.25rem" />}
-                  aria-label="Cart"
-                  borderRadius="50px"
-                  _hover={{
-                    bg: "whitesmoke",
-                    color: "#23375B",
-                  }}
+                  className="icon"
                 />
-
                 <IconButton
                   as={NavLink}
-                  _hover={{
-                    bg: "whitesmoke",
-                    color: "#23375B",
-                  }}
                   // to="/myaccount"  --> Cuando podamos privatizar la ruta con el token
                   to="/login"
                   icon={<FiUser fontSize="1.25rem" />}
-                  aria-label="MyAccount"
-                  borderRadius="50px"
+                  className="icon"
                 />
               </ButtonGroup>
               <Input
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    placeholder="Buscar..."
-                    display={showInput ? "block" : "none"}
-                    onKeyPress={(e) => {
-                      if (e.key === "Enter") {
-                        handleSearch();
-                      }
-                    }}
-                  />
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="input"
+                placeholder="Buscar..."
+                display={showInput ? "block" : "none"}
+                onKeyPress={(e) => {
+                  if (e.key === "Enter") {
+                    handleSearch();
+                  }
+                }}
+              />
               {/* <Avatar boxSize="10" name="Christoph Winston" src="/* token.user.photo *" /> */}
             </HStack>
           ) : (
             <Box display="flex" position="relative" zIndex="99">
               <Collapse
-              in={isOpen}
-                style={{ position: "absolute", top: "90px", right: "0" }}
-                >
-                <Box
-                // in={isOpen ? "block" : "none"}
-                  display="flex"
-                  color="#23375B"
-                  alignItems="center"
-                  flexDirection="column"
-                  bg="whitesmoke"
-                  borderRadius="10px"
-                  pt="5%"
-                  // w="220px"
-                  // minW="365px"
-                  width="85vw"
-                  // h="450px"
-                  h="58vh"
-                  border="1px solid #23375B"
-                >
-                  <Flex>
+                in={isOpen}
+                style={{ position: "absolute", top: "100px", right: "0" }}
+              >
+                <Box className="hamburger--menu">
+                  {/* <Flex>
                     <Input
                       value={searchTerm}
-                      textAlign="center"
-                      m="10px"
-                      w="200%"
-                      border="1px solid #23375B"
+                      className="input"
                       onChange={(e) => setSearchTerm(e.target.value)}
-                      placeholder="Buscar"
-                      color="black"
-                      // display={showInput ? "block" : "none"}
+                      placeholder="Buscar.."
                       onKeyPress={(e) => {
                         if (e.key === "Enter") {
                           handleSearch();
                         }
                       }}
                     />
-                    {/* <IconButton
+                    <IconButton
                     onClick={() => setShowInput(!showInput)}
                     icon={<FiSearch fontSize="1.25rem" />}
                     aria-label="Search"
                     borderRadius="50px"
-                  /> */}
-                  </Flex>
+                  />
+                  </Flex> */}
                   <Button
                     onClick={() => setIsOpen(false)}
                     as={NavLink}
                     to="/"
-                    bg="transparent"
-                    borderRadius="50px"
-                    m="10px 0"
-                    transition="All 0.0s linear"
-                    _hover={{
-                      bg: "#23375B",
-                      color: "white",
-                      p: "6px",
-                      w: "90%",
-                      borderRadius: "4px",
-                      // transform: "scale(1.05)"
-                    }}
+                    className="button"
                   >
                     Inicio
                   </Button>
@@ -254,18 +173,7 @@ export const Navbar = () => {
                     onClick={() => setIsOpen(false)}
                     as={NavLink}
                     to="/courses"
-                    bg="transparent"
-                    borderRadius="50px"
-                    m="10px 0"
-                    transition="All 0.0s linear"
-                    _hover={{
-                      bg: "#23375B",
-                      color: "white",
-                      p: "6px",
-                      w: "90%",
-                      borderRadius: "4px",
-                      // transform: "scale(1.05)"
-                    }}
+                    className="button"
                   >
                     Cursos
                   </Button>
@@ -273,18 +181,7 @@ export const Navbar = () => {
                     onClick={() => setIsOpen(false)}
                     as={NavLink}
                     to="/freetests"
-                    bg="transparent"
-                    borderRadius="50px"
-                    m="10px 0"
-                    transition="All 0.0s linear"
-                    _hover={{
-                      bg: "#23375B",
-                      color: "white",
-                      p: "6px",
-                      w: "90%",
-                      borderRadius: "4px",
-                      // transform: "scale(1.05)"
-                    }}
+                    className="button"
                   >
                     Tests Gratis
                   </Button>
@@ -292,18 +189,7 @@ export const Navbar = () => {
                     onClick={() => setIsOpen(false)}
                     as={NavLink}
                     to="/shop"
-                    bg="transparent"
-                    borderRadius="50px"
-                    m="10px 0"
-                    transition="All 0.0s linear"
-                    _hover={{
-                      bg: "#23375B",
-                      color: "white",
-                      p: "6px",
-                      w: "90%",
-                      borderRadius: "4px",
-                      // transform: "scale(1.05)"
-                    }}
+                    className="button"
                   >
                     Tienda
                   </Button>
@@ -311,18 +197,7 @@ export const Navbar = () => {
                     onClick={() => setIsOpen(false)}
                     as={NavLink}
                     to="/contact"
-                    bg="transparent"
-                    borderRadius="50px"
-                    m="10px 0"
-                    transition="All 0.0s linear"
-                    _hover={{
-                      bg: "#23375B",
-                      color: "white",
-                      p: "6px",
-                      w: "90%",
-                      borderRadius: "4px",
-                      // transform: "scale(1.05)"
-                    }}
+                    className="button"
                   >
                     Contacto
                   </Button>
@@ -330,18 +205,7 @@ export const Navbar = () => {
                     onClick={() => setIsOpen(false)}
                     as={NavLink}
                     to="/cart"
-                    bg="transparent"
-                    borderRadius="50px"
-                    m="10px 0"
-                    transition="All 0.0s linear"
-                    _hover={{
-                      bg: "#23375B",
-                      color: "white",
-                      p: "6px",
-                      w: "90%",
-                      borderRadius: "4px",
-                      // transform: "scale(1.05)"
-                    }}
+                    className="button"
                   >
                     Carrito
                   </Button>
@@ -349,31 +213,40 @@ export const Navbar = () => {
                     onClick={() => setIsOpen(false)}
                     as={NavLink}
                     to="/login"
-                    bg="transparent"
-                    borderRadius="50px"
-                    m="10px 0"
-                    transition="All 0.0s linear"
-                    _hover={{
-                      bg: "#23375B",
-                      color: "white",
-                      p: "6px",
-                      w: "90%",
-                      borderRadius: "4px",
-                      // transform: "scale(1.05)"
-                    }}
+                    className="button"
                   >
                     Mi cuenta
                   </Button>
                 </Box>
               </Collapse>
-              <IconButton
-                variant="ghost"
-                icon={<FiMenu fontSize="1.25rem" />}
-                aria-label="Open Menu"
-                relative
-                bg="white"
-                onClick={() => setIsOpen(!isOpen)}
-              />
+              <Box className="icons--hamburguer--menu">
+                <Flex>
+                  <Input
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    placeholder="Buscar..."
+                    className="input"
+                    display={showInput ? "block" : "none"}
+                    onKeyPress={(e) => {
+                      if (e.key === "Enter") {
+                        handleSearch();
+                      }
+                    }}
+                  />
+                  <IconButton
+                    onClick={() => setShowInput(!showInput)}
+                    icon={<FiSearch fontSize="1.25rem" />}
+                    variant="ghost"
+                    color="whitesmoke"
+                  />
+                <IconButton
+                  variant="ghost"
+                  icon={<FiMenu fontSize="1.25rem" />}
+                  onClick={() => setIsOpen(!isOpen)}
+                  ref={menuRef}
+                />
+                </Flex>
+              </Box>
             </Box>
           )}
         </Flex>
