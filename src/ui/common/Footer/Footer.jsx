@@ -123,7 +123,10 @@ export const Footer = () => (
                       {link.label}
                     </Button>
                   ) : (
-                    <NavLink to={link.href} key={idx}>
+                    <NavLink
+                      to={link.href}
+                      key={idx}
+                    >
                       {link.label}
                     </NavLink>
                   );
