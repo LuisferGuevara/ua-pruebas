@@ -18,7 +18,7 @@ import {
 import { useState } from "react";
 // import { Form } from 'react-router-dom'
 import AddressOptions from "./AddressOptions";
-import ProvincesOptions from "./CitiesOptions";
+import ProvincesOptions from "./ProvinceOptions";
 import { Dropzone } from "./Dropzone";
 import { PasswordField } from "./PasswordField";
 
