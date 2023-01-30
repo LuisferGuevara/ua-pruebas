@@ -53,6 +53,25 @@
       background-color: #23375bdf;
     }
   }
+
+  .icons--hamburguer--menu {
+    .input {
+      color: #23375b;
+      border: 1px solid #23375b;
+    }
+    .input::placeholder {
+      color: gray;
+    }
+
+    .button {
+      color: #23375b;
+      &:hover {
+        background-color: #23375b;
+        color: whitesmoke;
+
+      }
+    }
+  }
 }
 
 .navigation--navbar {
