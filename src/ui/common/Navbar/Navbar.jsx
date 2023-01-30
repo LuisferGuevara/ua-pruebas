@@ -10,11 +10,11 @@ import {
   Image,
   Input,
   Collapse,
-  Divider,
 } from "@chakra-ui/react";
 import React, { useState, useEffect, useRef } from "react";
 import { FiUser, FiMenu, FiSearch, FiShoppingCart } from "react-icons/fi";
 import logo from "../../../assets/mario.png";
+import logo2 from "../../../assets/mario-azul.png";
 import { NavLink } from "react-router-dom";
 import "./Navbar.scss";
 
@@ -24,6 +24,7 @@ export const Navbar = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [showInput, setShowInput] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [hasScrolled, setHasScrolled] = useState(false);
 
   function handleClickOutside(event) {
     if (menuRef.current && !menuRef.current.contains(event.target)) {
@@ -39,39 +40,55 @@ export const Navbar = () => {
     };
   }, []);
 
+  useEffect(() => {
+    function handleScroll() {
+      const currentScrollPos = window.pageYOffset;
+      if (currentScrollPos > 0) {
+        setHasScrolled(true);
+      } else {
+        setHasScrolled(false);
+      }
+    }
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   function handleSearch() {
     // hacer la función mamahuevos
   }
 
   return (
-
-    <Box
-      as="section"
-      w="85%"
-      h="150px"
-      m="0 auto"
-      color="#23375B"
-      maxWidth="1440px"
-    >
-
-      <Box as="nav">
+    <Box as="section" className={`navbar ${hasScrolled ? "scrolled" : ""}`}>
+      <Box as="nav" px="5px">
         <Flex justify="space-between" py="30px">
           <Flex>
             <NavLink to="/">
-              <Image
-                src={logo}
-                alt="Dan Abramov"
-                objectFit="contain"
-                w="180px"
-                h="100%"
-              />
+              {hasScrolled ? (
+                <Image
+                  src={logo2} // Luisfer: Intentar hacer las dos imagenes del mismo tamaño
+                  //          porque al hacer scroll, se nos mueve el input
+                  alt="Papi"
+                  objectFit="contain"
+                  w="180px"
+                  h="100%"
+                />
+              ) : (
+                <Image
+                  src={logo}
+                  alt="Dan Abramov"
+                  objectFit="contain"
+                  w="180px"
+                  h="100%"
+                />
+              )}
             </NavLink>
           </Flex>
           <HStack className="navigation--navbar">
             {isDesktop && (
               <ButtonGroup className="button--group">
                 <Button as={NavLink} to="/" className="button">
-
                   Inicio
                 </Button>
                 <Button as={NavLink} to="/courses" className="button">
@@ -98,17 +115,6 @@ export const Navbar = () => {
                     icon={<FiSearch fontSize="1.25rem" />}
                     className="icon"
                   />
-                  {/* <Input
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    placeholder="Buscar..."
-                    display={showInput ? "block" : "none"}
-                    onKeyPress={(e) => {
-                      if (e.key === "Enter") {
-                        handleSearch();
-                      }
-                    }}
-                  /> */}
                 </Flex>
                 <IconButton
                   as={NavLink}
@@ -145,25 +151,6 @@ export const Navbar = () => {
                 style={{ position: "absolute", top: "100px", right: "0" }}
               >
                 <Box className="hamburger--menu">
-                  {/* <Flex>
-                    <Input
-                      value={searchTerm}
-                      className="input"
-                      onChange={(e) => setSearchTerm(e.target.value)}
-                      placeholder="Buscar.."
-                      onKeyPress={(e) => {
-                        if (e.key === "Enter") {
-                          handleSearch();
-                        }
-                      }}
-                    />
-                    <IconButton
-                    onClick={() => setShowInput(!showInput)}
-                    icon={<FiSearch fontSize="1.25rem" />}
-                    aria-label="Search"
-                    borderRadius="50px"
-                  />
-                  </Flex> */}
                   <Button
                     onClick={() => setIsOpen(false)}
                     as={NavLink}
@@ -240,23 +227,22 @@ export const Navbar = () => {
                     onClick={() => setShowInput(!showInput)}
                     icon={<FiSearch fontSize="1.25rem" />}
                     variant="ghost"
-                    color="whitesmoke"
+                    className="button"
+                    // color="whitesmoke"
                   />
-                <IconButton
-                  variant="ghost"
-                  icon={<FiMenu fontSize="1.25rem" />}
-                  onClick={() => setIsOpen(!isOpen)}
-                  ref={menuRef}
-                />
+                  <IconButton
+                    variant="ghost"
+                    icon={<FiMenu fontSize="1.25rem" />}
+                    onClick={() => setIsOpen(!isOpen)}
+                    ref={menuRef}
+                    className="button"
+                  />
                 </Flex>
               </Box>
             </Box>
           )}
         </Flex>
       </Box>
-      <Divider
-        borderColor="#2a3d60" /*He puesto un divider para probar cómo quedaría al ser navbar, main y footer del mismo color. Yago */
-      />
     </Box>
   );
 };

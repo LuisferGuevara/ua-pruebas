@@ -15,13 +15,13 @@ import {
 } from "@chakra-ui/react";
 import * as React from "react";
 import { NavLink } from "react-router-dom";
-import { HiEye, HiEyeOff } from 'react-icons/hi';
+import { HiEye, HiEyeOff } from "react-icons/hi";
 import { useState } from "react";
 
 export const SignInForm = (props) => {
   const [isHidden, setIsHidden] = useState();
   return (
-    <Stack spacing="8" {...props} minH="697px" borderRadius="0 28px  28px 0"  >
+    <Stack spacing="8" {...props} minH="697px" borderRadius="0 28px  28px 0">
       <Stack spacing="6">
         <Stack
           spacing={{
@@ -45,7 +45,7 @@ export const SignInForm = (props) => {
       <Stack spacing="2">
         <Stack spacing="16" mt="40px">
           <FormControl>
-            <FormLabel htmlFor="email" color="#23375B" >
+            <FormLabel htmlFor="email" color="#23375B">
               Email
             </FormLabel>
             <Input id="email" placeholder="Introduce tu email" type="email" color="#23375B !important" border="1px solid #23375B"  borderRadius="8px"/>
@@ -80,7 +80,7 @@ export const SignInForm = (props) => {
             INICIAR SESIÓN
           </Button>
         </Stack>
-        <Stack  pt="8em">
+        <Stack pt="8em">
           <HStack spacing="1">
             <Text color="#23375B">¿No tienes una cuenta aún?</Text>
             <NavLink to="/register" color="red">

@@ -11,6 +11,7 @@ import {
   // Text,
   // Route,
   Heading,
+  Text,
 } from "@chakra-ui/react";
 import * as React from "react";
 import { FaInstagram } from "react-icons/fa";
@@ -108,17 +109,26 @@ export const Footer = () => (
                 align={"center"}
                 spacing="2"
                 shouldWrapChildren
+
+                h="100%"
               >
                 {group.links.map((link, idx) => {
                   return group.title === "ENLACES" ? (
                     <Button
-                      fontSize="large"
-                      color="#FFFAF0"
+                      fontSize="md"
+                      color="whitesmoke"
                       key={idx}
                       as="a"
+
                       variant="link-on-accent"
                       href={link.href}
                       target="_blank"
+                      fontWeight={"normal"}
+                      bg="transparent"
+                      // borderRadius={"0"}
+                      // _hover={{
+                      //   borderBottom:"1px solid whitesmoke"
+                      // }}
                     >
                       {link.label}
                     </Button>

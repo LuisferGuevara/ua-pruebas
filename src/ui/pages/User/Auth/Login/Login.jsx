@@ -32,17 +32,14 @@ export const Login = () => (
       >
         <DarkMode>
           <Flex
-           
-            
             direction="column"
             px={{
               base: "4",
               md: "8",
             }}
             height="full"
-            color="on-accent"
           >
-            <Flex flex="1" align="left" mt="10">
+            <Flex flex="1" align="left" mt="10"  color="white">
               <Stack spacing="8">
                 <Stack spacing="0" textAlign="start">
                   <Heading mb="-25px" fontSize="3em" color="white" textShadow="1px 2px 0 black">
@@ -55,7 +52,6 @@ export const Login = () => (
                     fontSize="lg"
                     maxW="md"
                     fontWeight="bold"
-                    color="white"
                     textShadow="1px 2px 0 black"
                     textAlign="justify"
                   >
