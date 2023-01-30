@@ -125,7 +125,7 @@ export const Navbar = () => {
                 <IconButton
                   as={NavLink}
                   // to="/myaccount"  --> Cuando podamos privatizar la ruta con el token
-                  to="/login"
+                  to="/MyAccount"
                   icon={<FiUser fontSize="1.25rem" />}
                   className="icon"
                 />

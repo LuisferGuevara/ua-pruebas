@@ -3,10 +3,13 @@ import {
   Button,
   ButtonGroup,
   IconButton,
+  // Divider,
   Flex,
   Img,
   SimpleGrid,
   Stack,
+  // Text,
+  // Route,
   Heading,
   Text,
 } from "@chakra-ui/react";
@@ -14,7 +17,7 @@ import * as React from "react";
 import { FaInstagram } from "react-icons/fa";
 import { links } from "./_data";
 import logo from "../../../assets/mario.png";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export const Footer = () => (
   <Box as="section" w="100%" m="0 auto" bgColor="#121212">
@@ -69,7 +72,7 @@ export const Footer = () => (
             Academia online para mejorar tu futuro profesional como policía
             nacional, tu inglés y ¡mucho más!
           </Heading>
-          <Link href="/contact">info@uniformeazul.com</Link>
+          <NavLink to="/contact">info@uniformeazul.com</NavLink>
         </Stack>
         <SimpleGrid
           columns={{
@@ -130,7 +133,10 @@ export const Footer = () => (
                       {link.label}
                     </Button>
                   ) : (
-                    <NavLink href={link.href} key={idx} style={{color:"whitesmoke", fontWeight:"350", fontSize:"16px", bg:"transparent"}}>
+                    <NavLink
+                      to={link.href}
+                      key={idx}
+                    >
                       {link.label}
                     </NavLink>
                   );

@@ -48,34 +48,22 @@ export const SignInForm = (props) => {
             <FormLabel htmlFor="email" color="#23375B">
               Email
             </FormLabel>
-            <Input
-              id="email"
-              placeholder="Introduce tu email"
-              type="email"
-              color="#23375B"
-              border="1px solid #23375B"
-              borderRadius="8px"
-            />
+            <Input id="email" placeholder="Introduce tu email" type="email" color="#23375B !important" border="1px solid #23375B"  borderRadius="8px"/>
           </FormControl>
           <FormControl>
-            <FormLabel htmlFor="password" color="#23375B">
-              Contraseña
-            </FormLabel>
-
-            <InputGroup>
-              <InputRightElement>
-                <IconButton
-                  onClick={() => setIsHidden(!isHidden)}
-                  color="#23375B"
-                  bg="transparent"
-                  _hover={"none"}
-                  icon={isHidden ? <HiEyeOff /> : <HiEye />}
-                >
-                  {isHidden ? "Mostrar contraseñas" : "Ocultar contraseñas"}
-                </IconButton>
-              </InputRightElement>
-              <Input id="password" placeholder="********" type="password"   border="1px solid #23375B"
-              borderRadius="8px"/>
+            <FormLabel htmlFor="password" color="#23375B">Contraseña</FormLabel>
+            <InputGroup border="1px solid #23375B"  borderRadius="8px">
+            <InputRightElement>
+                    <IconButton
+                      onClick={() => setIsHidden(!isHidden)}
+                      color="#23375B"
+                      bg="transparent"
+                      icon={isHidden ? <HiEyeOff /> : <HiEye />}
+                    >
+                      {isHidden ? "Mostrar contraseñas" : "Ocultar contraseñas"}
+                    </IconButton>
+                  </InputRightElement>
+            <Input id="password" placeholder="********" type={isHidden ? "password" : "text"} color="#23375B"/>
             </InputGroup>
           </FormControl>
         </Stack>
