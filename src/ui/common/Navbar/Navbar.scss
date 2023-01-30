@@ -1,23 +1,25 @@
 .navbar {
-  width: 85%;
+  width: 86%;
   height: 140px;
   margin: 0 auto;
   color: #23375b;
   max-width: 1440px;
   // position: fixed !important;
-  z-index: 100;
-  top: 0;
+  // top: 0;
+  // left: 7%;
+  // z-index: 99;
+  // transform: translate(-50%, -50%);
 }
 
 .navbar.scrolled {
   background-color: whitesmoke;
   border-radius: 0 0 25px 25px;
+  border: 1px solid black;
+  border-top: none;
   transition: background-color 0.5s ease-in-out;
 
   .navigation--navbar {
     .button--group {
-      background-color: #23375b;
-      color: whitesmoke;
       .button {
         &:hover {
           background-color: whitesmoke;
@@ -64,11 +66,10 @@
     }
 
     .button {
-      color: #23375b;
+      color: whitesmoke;
       &:hover {
         background-color: #23375b;
         color: whitesmoke;
-
       }
     }
   }
@@ -170,4 +171,5 @@
     margin-right: 5px;
     border-radius: 100px;
   }
+
 }

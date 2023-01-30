@@ -148,7 +148,7 @@ export const Navbar = () => {
             <Box display="flex" position="relative" zIndex="99">
               <Collapse
                 in={isOpen}
-                style={{ position: "absolute", top: "100px", right: "0" }}
+                style={{ position: "absolute", top: "110px", right: "-3px"}}
               >
                 <Box className="hamburger--menu">
                   <Button
@@ -209,7 +209,7 @@ export const Navbar = () => {
                   </Button>
                 </Box>
               </Collapse>
-              <Box className="icons--hamburguer--menu">
+              <Box className="icons--hamburguer--menu" color="red">
                 <Flex>
                   <Input
                     value={searchTerm}
@@ -224,6 +224,7 @@ export const Navbar = () => {
                     }}
                   />
                   <IconButton
+                     color={"whitesmoke"}
                     onClick={() => setShowInput(!showInput)}
                     icon={<FiSearch fontSize="1.25rem" />}
                     variant="ghost"
@@ -231,6 +232,8 @@ export const Navbar = () => {
                     // color="whitesmoke"
                   />
                   <IconButton
+                  color={"whitesmoke"}
+
                     variant="ghost"
                     icon={<FiMenu fontSize="1.25rem" />}
                     onClick={() => setIsOpen(!isOpen)}
