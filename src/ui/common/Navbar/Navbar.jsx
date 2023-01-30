@@ -227,13 +227,15 @@ export const Navbar = () => {
                     onClick={() => setShowInput(!showInput)}
                     icon={<FiSearch fontSize="1.25rem" />}
                     variant="ghost"
-                    color="whitesmoke"
+                    className="button"
+                    // color="whitesmoke"
                   />
                   <IconButton
                     variant="ghost"
                     icon={<FiMenu fontSize="1.25rem" />}
                     onClick={() => setIsOpen(!isOpen)}
                     ref={menuRef}
+                    className="button"
                   />
                 </Flex>
               </Box>
