@@ -1,4 +1,5 @@
 import React from 'react'
+import { FaRobot } from 'react-icons/fa'
 import { Box, Center, DarkMode, Flex, Heading, Stack, Text, ButtonGroup, Button } from "@chakra-ui/react";
 
 const Home = () => {
@@ -14,8 +15,9 @@ const Home = () => {
    </Text>
    </Box>
    <ButtonGroup display="flex" flexDirection="column" gap="5px">
-    <Button>
-      Asistente
+    <Button
+    >
+    {<FaRobot fontSize="1.6rem"/>} Asistente
     </Button>
     <Button>
       Acceder a los cursos
