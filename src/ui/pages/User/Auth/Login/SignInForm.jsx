@@ -48,7 +48,7 @@ export const SignInForm = (props) => {
             <FormLabel htmlFor="email" color="#23375B" >
               Email
             </FormLabel>
-            <Input id="email" placeholder="Introduce tu email" type="email" color="#23375B" border="1px solid #23375B"  borderRadius="8px"/>
+            <Input id="email" placeholder="Introduce tu email" type="email" color="#23375B !important" border="1px solid #23375B"  borderRadius="8px"/>
           </FormControl>
           <FormControl>
             <FormLabel htmlFor="password" color="#23375B">Contraseña</FormLabel>
@@ -63,7 +63,7 @@ export const SignInForm = (props) => {
                       {isHidden ? "Mostrar contraseñas" : "Ocultar contraseñas"}
                     </IconButton>
                   </InputRightElement>
-            <Input id="password" placeholder="********" type="password" />
+            <Input id="password" placeholder="********" type={isHidden ? "password" : "text"} color="#23375B"/>
             </InputGroup>
           </FormControl>
         </Stack>

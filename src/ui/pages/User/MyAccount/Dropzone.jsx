@@ -21,18 +21,18 @@ import {
     >
       <VStack spacing="3">
         <Square size="10" bg="bg-subtle" borderRadius="lg">
-          <Icon as={FiUploadCloud} boxSize="5" color="muted" />
+          <Icon as={FiUploadCloud} boxSize="5" color="white !important" />
         </Square>
         <VStack spacing="1">
           <HStack spacing="1" whiteSpace="nowrap">
             <Button variant="link" colorScheme="blue" size="sm">
               Subir archivo
             </Button>
-            <Text fontSize="sm" color="muted">
+            <Text fontSize="sm" color="white !important">
               o arrastra y suelta
             </Text>
           </HStack>
-          <Text fontSize="xs" color="muted">
+          <Text fontSize="xs" color="white !important">
             PNG, JPG hasta XMB
           </Text>
         </VStack>
